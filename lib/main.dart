@@ -1,3 +1,5 @@
+import 'package:catalog_do/theme.dart';
+import 'package:catalog_do/util.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
@@ -8,15 +10,18 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final brightness = View.of(context).platformDispatcher.platformBrightness;
+
+    // Use with Google Fonts package to use downloadable fonts
+    TextTheme textTheme = createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
+    MaterialTheme theme = MaterialTheme(textTheme);
+
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: brightness == Brightness.light ? theme.light() : theme.dark(),
+      darkTheme: theme.dark(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

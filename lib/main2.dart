@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
 
     MaterialTheme theme = MaterialTheme(textTheme);
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Catalog Demo',
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
