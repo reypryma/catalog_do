@@ -1,6 +1,7 @@
+import 'package:catalog_do/theme/util.dart';
 import 'package:flutter/material.dart';
-import 'util.dart';
-import 'theme.dart';
+
+import 'theme/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
 
     // Use with Google Fonts package to use downloadable fonts
     TextTheme textTheme = createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
-
     MaterialTheme theme = MaterialTheme(textTheme);
+
     return MaterialApp(
       title: 'Catalog Demo',
       theme: brightness == Brightness.light ? theme.light() : theme.dark(),
