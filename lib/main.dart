@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -21,23 +21,35 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    _appTheme.initTheme(context);
     _appTheme.addListener(() => setState(() {}));
   }
 
   @override
   Widget build(BuildContext context) {
-    final brightness = View.of(context).platformDispatcher.platformBrightness;
-
-    // Use with Google Fonts package to use downloadable fonts
-    TextTheme textTheme = createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
-    MaterialTheme theme = MaterialTheme(textTheme);
-
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: _appTheme.lightTheme,
       darkTheme: _appTheme.darkTheme,
       themeMode: _appTheme.themeMode,
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Builder(
+        builder: (context) => Scaffold(
+          body: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Toggle Theme',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+                IconButton(
+                  onPressed: () => _appTheme.toggleTheme(context),
+                  icon: const Icon(Icons.settings_display_rounded),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:catalog_do/theme/theme.dart';
+import 'package:catalog_do/theme/util.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme extends ChangeNotifier {
   static final _instance = AppTheme._();
   final _localDb = LocalDB();
+  late MaterialTheme _materialTheme;
 
   ThemeMode _themeMode = ThemeMode.system;
 
@@ -19,31 +22,14 @@ class AppTheme extends ChangeNotifier {
     return _instance;
   }
 
-  ThemeData get lightTheme => ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    iconTheme: const IconThemeData(color: Colors.black),
-    textTheme: const TextTheme(
-      bodyLarge: TextStyle(fontSize: 16, color: Colors.grey),
-      titleLarge: TextStyle(
-        fontSize: 24,
-        color: Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
+  initTheme(BuildContext context){
+    TextTheme textTheme = createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
+    _materialTheme = MaterialTheme(textTheme);
+  }
 
-  ThemeData get darkTheme => ThemeData(
-    scaffoldBackgroundColor: Colors.grey[900],
-    iconTheme: const IconThemeData(color: Colors.white),
-    textTheme: TextTheme(
-      bodyLarge: TextStyle(fontSize: 16, color: Colors.grey[200]),
-      titleLarge: const TextStyle(
-        fontSize: 24,
-        color: Colors.white,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  );
+  ThemeData get lightTheme => _materialTheme.light();
+
+  ThemeData get darkTheme => _materialTheme.dark();
 
   Future<void> _getThemeMode() async {
     final isDarkMode = await _localDb.isDarkMode();
