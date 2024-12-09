@@ -3,14 +3,28 @@ import 'package:catalog_do/theme/util.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../constant/constant.dart';
+
 class AppTheme extends ChangeNotifier {
   static final _instance = AppTheme._();
   final _localDb = LocalDB();
   late MaterialTheme _materialTheme;
+  late int _bgSkin;
+
+  String? _theme = defaultThemeName;
+  String? _mode = defaultMode;
+  String? _topbar = defaultTopBar;
+  String? _menu = defaultMenu;
+
 
   ThemeMode _themeMode = ThemeMode.system;
 
   AppTheme._() {
+    _bgSkin = 0;
+    _mode = defaultMode;
+    _topbar = defaultTopBar;
+    _bgSkin = defaultBGSkin;
+    _menu = defaultMenu;
     _getThemeMode();
   }
 
@@ -62,6 +76,73 @@ class AppTheme extends ChangeNotifier {
     notifyListeners();
     await _localDb.setTheme(_themeMode == ThemeMode.dark);
   }
+
+  buildBGSkin(BuildContext context) {
+    return createBGSkin(context, _bgSkin);
+  }
+
+  int createBGSkin(BuildContext context, int _bgSkin) {
+    return _bgSkin;
+  }
+
+  changeBGSkin(int s) {
+    _bgSkin = s;
+    savePreferences("bgSkin", s);
+    notifyListeners();
+  }
+
+  loadPreferences() async {
+    // _theme = _localDb.getString("theme") ?? defaultThemeName;
+    // _mode = _localDb.getString("mode") ?? defaultMode;
+    // _topbar = _localDb.getString("topbar") ?? defaultTopBar;
+    // _menu = _localDb.getString("menu") ?? defaultMenu;
+    // _bgSkin = _localDb.getInt("bgSkin") ?? defaultBGSkin;
+
+    _theme = _localDb.loadDynamicLayout<String>("theme") ?? defaultThemeName;
+    _mode = _localDb.loadDynamicLayout<String>("mode") ?? defaultMode;
+    _topbar = _localDb.loadDynamicLayout<String>("topbar") ?? defaultTopBar;
+    _menu = _localDb.loadDynamicLayout<String>("menu") ?? defaultMenu;
+    _bgSkin = _localDb.loadDynamicLayout<int>("bgSkin") ?? defaultBGSkin;
+
+    notifyListeners();
+  }
+
+  savePreferences(String key, dynamic value) async {
+    // _pref.clear();
+    _localDb.setDynamicLayout(key, value);
+  }
+
+  changeBrightness(String b) {
+    _mode = b;
+    savePreferences("mode", b);
+
+    // Chnage topbar based on mode
+    if (linkTopBarWithMode == true) {
+      _topbar = b;
+      savePreferences("topbar", b);
+    }
+
+    // Chnage menu based on mode
+    if (linkMenuWithMode == true) {
+      _menu = b;
+      savePreferences("menu", b);
+    }
+
+    notifyListeners();
+  }
+
+  changeTopBar(String tb) {
+    _topbar = tb;
+    savePreferences("topbar", tb);
+    notifyListeners();
+  }
+
+  changeMenu(String m) {
+    _menu = m;
+    savePreferences("menu", m);
+    notifyListeners();
+  }
+
 }
 
 class LocalDB {
@@ -79,5 +160,27 @@ class LocalDB {
   Future setTheme(bool isDarkMode) async {
     await _init();
     await _prefs?.setBool('isDarkMode', isDarkMode);
+  }
+
+  Future setDynamicLayout(String key, dynamic value) async{
+    if (key == "theme") {
+      _prefs!.setString("theme", value);
+    } else if (key == "mode") {
+      _prefs!.setString("mode", value);
+    } else if (key == "topbar") {
+      _prefs!.setString("topbar", value);
+    } else if (key == "menu") {
+      _prefs!.setString("menu", value);
+    } else if (key == "bgSkin") {
+      _prefs!.setInt("bgSkin", value);
+    }
+  }
+
+  T? loadDynamicLayout<T>(String key){
+    return _prefs!.get(key) as T;
+  }
+
+  Future<bool> clearLocale() async {
+    return await _prefs!.clear();
   }
 }
