@@ -1,3 +1,4 @@
+import 'package:catalog_do/routes/app_routes.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/theme/theme.dart';
 import 'package:catalog_do/theme/util.dart';

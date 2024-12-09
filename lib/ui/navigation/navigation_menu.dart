@@ -33,7 +33,6 @@ class _NavigationMenuState extends State<NavigationMenu> {
   }
 
   Widget _buildMenu() {
-    // return Container();
 
     return LayoutBuilder(builder: (context, constraints) {
 
