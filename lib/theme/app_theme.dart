@@ -92,11 +92,6 @@ class AppTheme extends ChangeNotifier {
   }
 
   loadPreferences() async {
-    // _theme = _localDb.getString("theme") ?? defaultThemeName;
-    // _mode = _localDb.getString("mode") ?? defaultMode;
-    // _topbar = _localDb.getString("topbar") ?? defaultTopBar;
-    // _menu = _localDb.getString("menu") ?? defaultMenu;
-    // _bgSkin = _localDb.getInt("bgSkin") ?? defaultBGSkin;
 
     _theme = _localDb.loadDynamicLayout<String>("theme") ?? defaultThemeName;
     _mode = _localDb.loadDynamicLayout<String>("mode") ?? defaultMode;
@@ -116,13 +111,11 @@ class AppTheme extends ChangeNotifier {
     _mode = b;
     savePreferences("mode", b);
 
-    // Chnage topbar based on mode
     if (linkTopBarWithMode == true) {
       _topbar = b;
       savePreferences("topbar", b);
     }
 
-    // Chnage menu based on mode
     if (linkMenuWithMode == true) {
       _menu = b;
       savePreferences("menu", b);
@@ -174,6 +167,8 @@ class LocalDB {
     } else if (key == "bgSkin") {
       _prefs!.setInt("bgSkin", value);
     }
+
+    print("Set key $key : $value");
   }
 
   T? loadDynamicLayout<T>(String key){

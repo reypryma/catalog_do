@@ -6,12 +6,13 @@ class Responsive {
   late String device;
 
   String deviceType() {
-    device = "mobile";
 
     if (deviceShortestSide! > 800) {
       device = "desktop";
     } else if (deviceShortestSide! > 650) {
       device = "tablet";
+    } else if (deviceShortestSide! < 650) {
+      device = "mobile";
     }
 
     return device;

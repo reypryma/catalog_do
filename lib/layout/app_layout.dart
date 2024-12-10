@@ -56,14 +56,20 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    deviceWidth = MediaQuery.of(context).size.width;
-    deviceHeight = MediaQuery.of(context).size.height;
-    deviceOrientation = MediaQuery.of(context).orientation;
-    deviceShortestSide = MediaQuery.of(context).size.shortestSide;
+    //
+    // deviceWidth = MediaQuery.of(context).size.width;
+    // deviceHeight = MediaQuery.of(context).size.height;
+    // deviceOrientation = MediaQuery.of(context).orientation;
+    // deviceShortestSide = MediaQuery.of(context).size.shortestSide;
+    //
+    print("deviceOrientation $deviceOrientation");
+    print("deviceWidth $deviceWidth");
+    print("deviceHeight $deviceHeight");
+    print("deviceShortestSide $deviceShortestSide");
+
 
     TextDirection languageDirection;
 
-    // Locale myLocale = Localizations.localeOf(context);
     bool rtl = (Directionality.of(context) == TextDirection.rtl);
 
     if (rtl) {
@@ -103,7 +109,7 @@ class AppScaffold extends StatelessWidget {
                 topBarActions: topBarActions,
                 topBarLeadingActions: topBarLeadingActions,
                 centerAlign: centerAlignAppBar,
-                leadingWidth: appBarleadingWidth ?? null,
+                leadingWidth: appBarleadingWidth,
               )
             : PreferredSize(
                 preferredSize: Size(0.0, 0.0),
@@ -145,7 +151,7 @@ class AppScaffold extends StatelessWidget {
               image = DecorationImage(
                 repeat: repeat,
                 image: AssetImage(
-                    "assets/images/" + bgSkins[_getBGSkin]!["image"]),
+                    'assets/images/' + bgSkins[_getBGSkin]!['image']),
                 fit: fit,
               );
             }
@@ -243,6 +249,7 @@ class AppContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("responsive ${Responsive().deviceType()} status $showMenu");
     // Desktop View
     if (Responsive().deviceType() == "desktop" && showMenu == true) {
       return Row(
@@ -271,7 +278,7 @@ class AppContentView extends StatelessWidget {
 class MobileView extends StatelessWidget {
   final Widget widget;
 
-  MobileView({required this.widget});
+  const MobileView({super.key, required this.widget});
 
   @override
   Widget build(BuildContext context) {
@@ -285,7 +292,7 @@ class MobileView extends StatelessWidget {
 class TabletView extends StatelessWidget {
   final Widget widget;
 
-  TabletView({super.key, required this.widget});
+  const TabletView({super.key, required this.widget});
 
   @override
   Widget build(BuildContext context) {

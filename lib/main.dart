@@ -2,7 +2,12 @@ import 'package:catalog_do/routes/app_routes.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/theme/theme.dart';
 import 'package:catalog_do/theme/util.dart';
+import 'package:catalog_do/ui/screen/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
+
+import 'constant/constant.dart';
+import 'ext/layout_extension.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,77 +33,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    deviceWidth = MediaQuery.of(context).size.width;
+    deviceHeight = MediaQuery.of(context).size.height;
+    deviceOrientation = isWeb ? Orientation.portrait : MediaQuery.of(context).orientation;
+    deviceShortestSide = isWeb ? MediaQuery.of(context).size.shortestSide : MediaQuery.of(context).size.shortestSide;
+
     return MaterialApp(
       theme: _appTheme.lightTheme,
       darkTheme: _appTheme.darkTheme,
       themeMode: _appTheme.themeMode,
-      home: Builder(
-        builder: (context) => Scaffold(
-          body: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Toggle Theme',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ),
-                IconButton(
-                  onPressed: () => _appTheme.toggleTheme(context),
-                  icon: const Icon(Icons.settings_display_rounded),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+      routes: PageRoutes.routes(context),
+      home: DashboardScreen()
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
