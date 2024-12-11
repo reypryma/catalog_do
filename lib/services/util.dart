@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -30,3 +31,5 @@ class DeviceHelper {
     return Platform.isAndroid;
   }
 }
+
+bool checkIfDeviceWide() => Responsive().deviceType() == "desktop" || Responsive().deviceType() == "tablet";
