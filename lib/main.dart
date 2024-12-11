@@ -3,7 +3,9 @@ import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/theme/theme.dart';
 import 'package:catalog_do/services/util.dart';
 import 'package:catalog_do/ui/screen/dashboard/dashboard_screen.dart';
+import 'package:catalog_do/ui/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'dart:math' as math;
 
 import 'constant/constant.dart';
@@ -38,12 +40,14 @@ class _MyAppState extends State<MyApp> {
     deviceOrientation = MediaQuery.of(context).orientation;
     deviceShortestSide = MediaQuery.of(context).size.shortestSide;
 
-    return MaterialApp(
-      theme: _appTheme.lightTheme,
-      darkTheme: _appTheme.darkTheme,
-      themeMode: _appTheme.themeMode,
-      routes: PageRoutes.routes(context),
-      home: DashboardScreen()
+    return GlobalLoaderOverlay(
+      child: MaterialApp(
+        theme: _appTheme.lightTheme,
+        darkTheme: _appTheme.darkTheme,
+        themeMode: _appTheme.themeMode,
+        routes: PageRoutes.routes(context),
+        home: SplashScreen()
+      ),
     );
   }
 }
