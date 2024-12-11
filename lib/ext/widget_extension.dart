@@ -91,29 +91,6 @@ extension WidgetExtension on Widget? {
     );
   }
 
-  /// set widget visibility
-  @Deprecated('')
-  Visibility withVisibility(
-      bool visible, {
-        Widget? replacement,
-        bool maintainAnimation = false,
-        bool maintainState = false,
-        bool maintainSize = false,
-        bool maintainSemantics = false,
-        bool maintainInteractivity = false,
-      }) {
-    return Visibility(
-      visible: visible,
-      maintainAnimation: maintainAnimation,
-      maintainInteractivity: maintainInteractivity,
-      maintainSemantics: maintainSemantics,
-      maintainSize: maintainSize,
-      maintainState: maintainState,
-      replacement: replacement ?? SizedBox(),
-      child: this!,
-    );
-  }
-
   /// add opacity to parent widget
   Widget opacity({
     required double opacity,
@@ -150,10 +127,10 @@ extension WidgetExtension on Widget? {
   }) {
     return Transform.scale(
       scale: scale,
-      child: this,
       origin: origin,
       alignment: alignment,
       transformHitTests: transformHitTests,
+      child: this,
     );
   }
 
@@ -166,8 +143,8 @@ extension WidgetExtension on Widget? {
     return Transform.translate(
       offset: offset,
       transformHitTests: transformHitTests,
-      child: this,
       key: key,
+      child: this,
     );
   }
 
@@ -210,15 +187,15 @@ extension WidgetExtension on Widget? {
 
   /// add Flexible to parent widget
   Widget flexible({flex = 1, FlexFit? fit}) {
-    return Flexible(child: this!, flex: flex, fit: fit ?? FlexFit.loose);
+    return Flexible(flex: flex, fit: fit ?? FlexFit.loose, child: this!);
   }
 
   /// add FittedBox to parent widget
   Widget fit({BoxFit? fit, AlignmentGeometry? alignment}) {
     return FittedBox(
-      child: this,
       fit: fit ?? BoxFit.contain,
       alignment: alignment ?? Alignment.center,
+      child: this,
     );
   }
 
@@ -238,5 +215,20 @@ extension WidgetExtension on Widget? {
   /// Make your any widget refreshable with RefreshIndicator on top
   Widget get makeRefreshable {
     return Stack(children: [ListView(), this!]);
+  }
+
+  /// Launch a new screen
+  Future<T?> launch<T>(BuildContext context,
+      {bool isNewTask = false}) async {
+    if (isNewTask) {
+      return await Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute<T>(builder: (_) => this!),
+            (route) => false,
+      );
+    } else {
+      return await Navigator.of(context).push(
+          MaterialPageRoute<T>(builder: (_) => this!),
+      );
+    }
   }
 }

@@ -33,3 +33,7 @@ class DeviceHelper {
 }
 
 bool checkIfDeviceWide() => Responsive().deviceType() == "desktop" || Responsive().deviceType() == "tablet";
+
+void finish(BuildContext context, [Object? result]) {
+  if (Navigator.canPop(context)) Navigator.pop(context, result);
+}
