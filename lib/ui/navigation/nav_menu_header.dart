@@ -11,7 +11,7 @@ class NavigationMenuHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    return Container(
+    return SizedBox(
       height: 180.0,
       child: DrawerHeader(
         decoration: BoxDecoration(

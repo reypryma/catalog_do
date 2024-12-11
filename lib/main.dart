@@ -1,7 +1,7 @@
 import 'package:catalog_do/routes/app_routes.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/theme/theme.dart';
-import 'package:catalog_do/theme/util.dart';
+import 'package:catalog_do/services/util.dart';
 import 'package:catalog_do/ui/screen/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     deviceWidth = MediaQuery.of(context).size.width;
     deviceHeight = MediaQuery.of(context).size.height;
-    deviceOrientation = isWeb ? Orientation.portrait : MediaQuery.of(context).orientation;
-    deviceShortestSide = isWeb ? MediaQuery.of(context).size.shortestSide : MediaQuery.of(context).size.shortestSide;
+    deviceOrientation = MediaQuery.of(context).orientation;
+    deviceShortestSide = MediaQuery.of(context).size.shortestSide;
 
     return MaterialApp(
       theme: _appTheme.lightTheme,

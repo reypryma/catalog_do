@@ -2,13 +2,16 @@ import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/data/menu_data.dart';
 import 'package:catalog_do/data/model/nav_menu_item.dart';
 import 'package:catalog_do/layout/responsive.dart';
+import 'package:catalog_do/services/util.dart';
 import 'package:flutter/material.dart';
 
 import 'nav_menu_item_list.dart';
 
 class NavigationMenu extends StatefulWidget {
+  const NavigationMenu({super.key});
+
   @override
-  _NavigationMenuState createState() => _NavigationMenuState();
+  State<NavigationMenu> createState() => _NavigationMenuState();
 }
 
 class _NavigationMenuState extends State<NavigationMenu> {
@@ -24,18 +27,17 @@ class _NavigationMenuState extends State<NavigationMenu> {
     }
 
     return Container(
-      // constraints: BoxConstraints(maxWidth: 300),
       width: w, //double.infinity,
       child: Drawer(
-        child: _buildMenu(),
+        child: Container(
+            padding: checkIfDeviceWide() ? EdgeInsets.symmetric(vertical: 50) : EdgeInsets.zero,
+            child: _buildMenu()),
       ),
     );
   }
 
   Widget _buildMenu() {
-
     return LayoutBuilder(builder: (context, constraints) {
-
       return ListView.builder(
           controller: _menuController,
           // shrinkWrap: true,

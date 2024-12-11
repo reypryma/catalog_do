@@ -15,6 +15,7 @@ class NavigationMenuListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Navigation menu list item ${item.type} ${item.title}");
     if (item.type == "header") {
       return NavigationMenuHeader();
     } else if (item.type == "menu" || item.type == "menu_switch" ||

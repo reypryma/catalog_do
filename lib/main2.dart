@@ -1,4 +1,4 @@
-import 'package:catalog_do/theme/util.dart';
+import 'package:catalog_do/services/util.dart';
 import 'package:flutter/material.dart';
 
 import 'theme/theme.dart';

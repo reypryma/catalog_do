@@ -17,7 +17,6 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String title = "Dashboard";
 
-
     bool fab = false;
     if (pageFAB != null && pageFAB != "") {
       fab = true;
@@ -29,15 +28,6 @@ class DashboardScreen extends StatelessWidget {
     }
 
     return LayoutBuilder(builder: (context, constraints) {
-      // deviceWidth = MediaQuery.of(context).size.width;
-      // deviceHeight = MediaQuery.of(context).size.height;
-      // deviceOrientation = MediaQuery.of(context).orientation;
-      // deviceShortestSide = MediaQuery.of(context).size.shortestSide;
-      //
-      // print("deviceShortestSide $deviceShortestSide");
-      // print("deviceWidth $deviceWidth");
-      // print("deviceHeight $deviceHeight");
-      // print("deviceOrientation $deviceOrientation");
 
       return AppScaffold(
         title: blogTitle,
