@@ -56,17 +56,6 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //
-    // deviceWidth = MediaQuery.of(context).size.width;
-    // deviceHeight = MediaQuery.of(context).size.height;
-    // deviceOrientation = MediaQuery.of(context).orientation;
-    // deviceShortestSide = MediaQuery.of(context).size.shortestSide;
-    //
-    print("deviceOrientation $deviceOrientation");
-    print("deviceWidth $deviceWidth");
-    print("deviceHeight $deviceHeight");
-    print("deviceShortestSide $deviceShortestSide");
-
 
     TextDirection languageDirection;
 
