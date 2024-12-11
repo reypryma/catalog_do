@@ -1,5 +1,5 @@
 import 'package:catalog_do/theme/theme.dart';
-import 'package:catalog_do/theme/util.dart';
+import 'package:catalog_do/services/util.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
