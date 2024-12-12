@@ -28,7 +28,6 @@ class DashboardScreen extends StatelessWidget {
     }
 
     return LayoutBuilder(builder: (context, constraints) {
-
       return AppScaffold(
         title: blogTitle,
         backbutton: "hide",
@@ -56,7 +55,7 @@ class DashboardScreen extends StatelessWidget {
     });
   }
 
-  Widget _buildContent(BuildContext context, List blogData, List<String> settings) {
+  Widget _buildContent(BuildContext context, List products, List<String> settings) {
     // ThemeData theme = Theme.of(context);
 
     return SingleChildScrollView(

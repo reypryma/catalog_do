@@ -9,6 +9,7 @@ String navMenuTitle = currentUser.title;
 String navMenuSubtitle = currentUser.profession;
 
 List<NavMenuItem> allMenuItem = [
+  NavMenuItem(route: "", count: 1, title: "Do Catalog", brief: "", type: "section"),
   NavMenuItem(route: PageRoutes.dashboard, count: 1, title: "Dashboard", brief: "", icon: iconDashboard, type: "menu"),
   NavMenuItem(route: PageRoutes.searchProduct, count: 1, title: "Search", brief: "", icon: iconBlogs, type: "menu"),
   NavMenuItem(route: PageRoutes.setting, count: 1, title: "Setting", brief: "", icon: iconBlogCategories, type: "menu"),
