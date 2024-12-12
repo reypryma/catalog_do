@@ -31,7 +31,7 @@ class AppScaffold extends StatelessWidget {
   final bool? confirmAppExit;
   final Function? onTapTitle;
 
-  AppScaffold({super.key,
+  const AppScaffold({super.key,
     this.title = "",
     required this.body,
     this.menu = "",

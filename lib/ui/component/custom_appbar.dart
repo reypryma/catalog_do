@@ -34,7 +34,7 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize; // default is 56.0
 
   @override
-  _CustomAppBarState createState() => _CustomAppBarState();
+  State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
@@ -124,7 +124,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         elevation: appBarElevation,
         leadingWidth: widget.leadingWidth,
         centerTitle: widget.centerAlign ?? false,
-        titleSpacing: ((widget.viewOn == "desktop") ? 20 : 2),
+        titleSpacing: ((widget.viewOn == "desktop") ? 24 : 4),
         title: widget.title,
         leading: ((leading.isNotEmpty)
             ? Row(children: leading)
