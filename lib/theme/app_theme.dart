@@ -10,6 +10,7 @@ class AppTheme extends ChangeNotifier {
   final _localDb = LocalDB();
   late MaterialTheme _materialTheme;
   late int _bgSkin;
+  late bool useDarkSkin;
 
   String? _theme = defaultThemeName;
   String? _mode = defaultMode;
@@ -66,6 +67,7 @@ class AppTheme extends ChangeNotifier {
         _themeMode = ThemeMode.light;
         break;
       case ThemeMode.system:
+        print('#${color.value.toRadixString(16).substring(2, 8)}')
         if (isDarkMode(context)) {
           _themeMode = ThemeMode.light;
         } else {

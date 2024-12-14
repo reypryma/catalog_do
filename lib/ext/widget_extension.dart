@@ -82,14 +82,6 @@ extension WidgetExtension on Widget? {
     );
   }
 
-  /// add corner radius
-  ClipRRect cornerRadiusWithClipRRect(double radius) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(radius)),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: this,
-    );
-  }
 
   /// add opacity to parent widget
   Widget opacity({
@@ -207,28 +199,5 @@ extension WidgetExtension on Widget? {
     return Tooltip(message: msg, child: this);
   }
 
-  /// Validate given widget is not null and returns given value if null.
-  Widget withTooltip({required String msg}) {
-    return Tooltip(message: msg, child: this);
-  }
 
-  /// Make your any widget refreshable with RefreshIndicator on top
-  Widget get makeRefreshable {
-    return Stack(children: [ListView(), this!]);
-  }
-
-  /// Launch a new screen
-  Future<T?> launch<T>(BuildContext context,
-      {bool isNewTask = false}) async {
-    if (isNewTask) {
-      return await Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute<T>(builder: (_) => this!),
-            (route) => false,
-      );
-    } else {
-      return await Navigator.of(context).push(
-          MaterialPageRoute<T>(builder: (_) => this!),
-      );
-    }
-  }
 }

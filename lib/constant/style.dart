@@ -148,7 +148,7 @@ BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
 
   return BoxDecoration(
     color: (canvasColor == primaryColor) ? Colors.black.withOpacity(0.25) : primaryColor,
-    borderRadius: BorderRadius.all(Radius.circular(20)),
+    // borderRadius: BorderRadius.all(Radius.circular(50)),
   );
 }
 

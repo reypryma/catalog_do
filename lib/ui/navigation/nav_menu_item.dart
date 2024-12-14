@@ -63,7 +63,6 @@ class NavigationMenuItem extends StatelessWidget {
   }
 }
 
-
 class NavigationMenuItemSection extends StatelessWidget {
   const NavigationMenuItemSection({
     super.key,
@@ -74,7 +73,6 @@ class NavigationMenuItemSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     if (item.type == "spacer") {
       return Padding(
         padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0.0),

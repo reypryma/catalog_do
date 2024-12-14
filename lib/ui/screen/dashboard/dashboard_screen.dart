@@ -1,3 +1,4 @@
+import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,6 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     // ThemeData theme = Theme.of(context);
-
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
@@ -72,10 +72,42 @@ class DashboardScreen extends StatelessWidget {
             //           : EdgeInsets.zero,
             //       child: Placeholder()),
             // )
-
-
+            _banner(context)
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _banner(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(12)),
+            ),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: Image.asset(Images.dummy[2], fit: BoxFit.cover),
+          ),
+          Container(
+            height: 300,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.black.withAlpha(120)),
+          ),
+          Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: MyText.titleLarge("Shop the Latest Trends and Unbeatable Deals", fontWeight: 700, letterSpacing: 1, color: contentTheme.light, textAlign: TextAlign.center),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
