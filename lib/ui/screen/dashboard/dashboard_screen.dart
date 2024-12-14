@@ -6,7 +6,8 @@ import '../../../constant/constant.dart';
 import '../../../constant/style.dart';
 
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key, this.data, this.listTitle, this.pageFAB, this.settings});
+  const DashboardScreen(
+      {super.key, this.data, this.listTitle, this.pageFAB, this.settings});
 
   final List? data;
   final String? listTitle;
@@ -36,11 +37,11 @@ class DashboardScreen extends StatelessWidget {
         body: AppContentView(
           title: title,
           mobile: MobileView(
-            widget: Placeholder(),
+            widget: _buildContent(context),
           ),
           desktop: DesktopView(
             title: title,
-            widget: Container(),
+            widget: _buildContent(context),
             invisibleAppBar: hideScaffoldAppBar,
           ),
         ),
@@ -55,7 +56,7 @@ class DashboardScreen extends StatelessWidget {
     });
   }
 
-  Widget _buildContent(BuildContext context, List products, List<String> settings) {
+  Widget _buildContent(BuildContext context) {
     // ThemeData theme = Theme.of(context);
 
     return SingleChildScrollView(
@@ -63,13 +64,16 @@ class DashboardScreen extends StatelessWidget {
         padding: sAllSidesGap,
         child: Column(
           children: [
-            Container(
-              constraints: Responsive().contentAreaWidth(),
-              child: Padding(
-                padding: Responsive().deviceType() != "mobile" ? sHorizontalGap : EdgeInsets.zero,
-                child: Placeholder()
-            ),
-            )
+            // Container(
+            //   constraints: Responsive().contentAreaWidth(),
+            //   child: Padding(
+            //       padding: Responsive().deviceType() != "mobile"
+            //           ? sHorizontalGap
+            //           : EdgeInsets.zero,
+            //       child: Placeholder()),
+            // )
+
+
           ],
         ),
       ),
