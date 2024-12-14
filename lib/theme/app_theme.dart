@@ -67,7 +67,9 @@ class AppTheme extends ChangeNotifier {
         _themeMode = ThemeMode.light;
         break;
       case ThemeMode.system:
-        print('#${color.value.toRadixString(16).substring(2, 8)}')
+        print('Scaffold color #${Theme.of(context).scaffoldBackgroundColor.value.toRadixString(16).substring(2, 8)}');
+        print('#${Colors.grey[900]?.value.toRadixString(16).substring(2, 8)}');
+
         if (isDarkMode(context)) {
           _themeMode = ThemeMode.light;
         } else {
