@@ -26,9 +26,14 @@ class _NavigationMenuState extends State<NavigationMenu> {
       w = menuWidthTablet;
     }
 
-    return Container(
+    return SizedBox(
       width: w, //double.infinity,
       child: Drawer(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(0),
+              bottomRight: Radius.circular(0)),
+        ),
         child: Container(
             padding: checkIfDeviceWide() ? EdgeInsets.symmetric(vertical: 50) : EdgeInsets.zero,
             child: _buildMenu()),

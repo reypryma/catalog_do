@@ -3,8 +3,10 @@ import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constant/app_text.dart';
 import '../../../constant/constant.dart';
 import '../../../constant/style.dart';
+import '../../../theme/app_theme.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen(
@@ -59,27 +61,21 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _buildContent(BuildContext context) {
     // ThemeData theme = Theme.of(context);
+    ThemeData theme = AppTheme().getTheme();
+
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
         child: Column(
           children: [
-            // Container(
-            //   constraints: Responsive().contentAreaWidth(),
-            //   child: Padding(
-            //       padding: Responsive().deviceType() != "mobile"
-            //           ? sHorizontalGap
-            //           : EdgeInsets.zero,
-            //       child: Placeholder()),
-            // )
-            _banner(context)
+            _banner(context, theme)
           ],
         ),
       ),
     );
   }
 
-  Widget _banner(BuildContext context) {
+  Widget _banner(BuildContext context, ThemeData theme) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24),
       child: Stack(
@@ -87,6 +83,7 @@ class DashboardScreen extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
+            height: 400,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
@@ -94,7 +91,7 @@ class DashboardScreen extends StatelessWidget {
             child: Image.asset(Images.dummy[2], fit: BoxFit.cover),
           ),
           Container(
-            height: 300,
+            height: 400,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.black.withAlpha(120)),
@@ -103,8 +100,28 @@ class DashboardScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.all(20),
-                child: MyText.titleLarge("Shop the Latest Trends and Unbeatable Deals", fontWeight: 700, letterSpacing: 1, color: contentTheme.light, textAlign: TextAlign.center),
+                child: AppText.titleLarge(
+                    "Shop the Latest Trends and Unbeatable Deals",
+                    fontWeight: 700,
+                    letterSpacing: 1,
+                    color: Colors.yellow,
+                    textAlign: TextAlign.center),
               ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    color: theme.secondaryHeaderColor,
+                    borderRadius: BorderRadius.circular(100)),
+                child: AppText.bodySmall(
+                  'This is Catalog Description',
+                  fontWeight: 600,
+                  letterSpacing: 1,
+                  textAlign: TextAlign.center,
+                ),
+              )
             ],
           )
         ],

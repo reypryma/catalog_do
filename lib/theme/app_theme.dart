@@ -22,7 +22,6 @@ class AppTheme extends ChangeNotifier {
 
   AppTheme._() {
     _bgSkin = 0;
-    _mode = defaultMode;
     _topbar = defaultTopBar;
     _bgSkin = defaultBGSkin;
     _menu = defaultMenu;
@@ -37,9 +36,11 @@ class AppTheme extends ChangeNotifier {
     return _instance;
   }
 
-  initTheme(BuildContext context){
+  initTheme(BuildContext context) async {
     TextTheme textTheme = createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
     _materialTheme = MaterialTheme(textTheme);
+    print('${_themeMode == ThemeMode.dark}');
+    await _localDb.setTheme(_themeMode == ThemeMode.dark);
   }
 
   ThemeData get lightTheme => _materialTheme.light();
@@ -50,6 +51,7 @@ class AppTheme extends ChangeNotifier {
     final isDarkMode = await _localDb.isDarkMode();
 
     if (isDarkMode == true) {
+      print("_getThemeMode isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
       _themeMode = ThemeMode.dark;
       notifyListeners();
     } else if (isDarkMode == false) {
@@ -138,6 +140,18 @@ class AppTheme extends ChangeNotifier {
     _menu = m;
     savePreferences("menu", m);
     notifyListeners();
+  }
+
+
+  ThemeData getTheme() {
+    print("getTheme isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
+    if (themeMode ==  ThemeMode.dark) {
+      print("Get Dark Theme");
+      return darkTheme;
+    } else {
+      print('Get Light Theme');
+      return lightTheme;
+    }
   }
 
 }

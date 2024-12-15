@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
   final _appTheme = AppTheme();
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     _appTheme.initTheme(context);
     _appTheme.addListener(() => setState(() {}));

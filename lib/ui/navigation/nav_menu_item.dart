@@ -1,5 +1,6 @@
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/nav_menu_item.dart';
+import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'nav_menu_item_action.dart';
@@ -14,6 +15,8 @@ class NavigationMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppTheme appTheme = AppTheme();
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 2.0, 0.0, 2.0),
       child: ListTile(
@@ -30,7 +33,7 @@ class NavigationMenuItem extends StatelessWidget {
             child: (Icon(
               item.icon,
               size: sNavMenuItemIconSize,
-              color: sNavMenuItemIconColor(context),
+              color: appTheme.getTheme().colorScheme.onSecondaryContainer,
             )),
           ),
         ),
