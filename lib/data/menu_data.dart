@@ -1,6 +1,7 @@
 
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/user_data.dart';
+import 'package:catalog_do/routes/app_routes.dart';
 
 import 'model/nav_menu_item.dart';
 
@@ -8,7 +9,8 @@ String navMenuTitle = currentUser.title;
 String navMenuSubtitle = currentUser.profession;
 
 List<NavMenuItem> allMenuItem = [
-  NavMenuItem(route: 'dashboard', count: 1, title: "Dashboard", brief: "", icon: iconDashboard, type: "menu"),
-  NavMenuItem(route: 'blogs', count: 1, title: "Blogs", brief: "", icon: iconBlogs, type: "menu"),
-  NavMenuItem(route: 'blog-categories', count: 1, title: "BlogCategories", brief: "", icon: iconBlogCategories, type: "menu"),
+  NavMenuItem(route: "", count: 1, title: "Do Catalog", brief: "", type: "section"),
+  NavMenuItem(route: PageRoutes.dashboard, count: 1, title: "Dashboard", brief: "", icon: iconDashboard, type: "menu"),
+  NavMenuItem(route: PageRoutes.searchProduct, count: 1, title: "Search", brief: "", icon: iconBlogs, type: "menu"),
+  NavMenuItem(route: PageRoutes.setting, count: 1, title: "Setting", brief: "", icon: iconBlogCategories, type: "menu"),
 ];

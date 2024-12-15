@@ -82,37 +82,6 @@ extension WidgetExtension on Widget? {
     );
   }
 
-  /// add corner radius
-  ClipRRect cornerRadiusWithClipRRect(double radius) {
-    return ClipRRect(
-      borderRadius: BorderRadius.all(Radius.circular(radius)),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: this,
-    );
-  }
-
-  /// set widget visibility
-  @Deprecated('')
-  Visibility withVisibility(
-      bool visible, {
-        Widget? replacement,
-        bool maintainAnimation = false,
-        bool maintainState = false,
-        bool maintainSize = false,
-        bool maintainSemantics = false,
-        bool maintainInteractivity = false,
-      }) {
-    return Visibility(
-      visible: visible,
-      maintainAnimation: maintainAnimation,
-      maintainInteractivity: maintainInteractivity,
-      maintainSemantics: maintainSemantics,
-      maintainSize: maintainSize,
-      maintainState: maintainState,
-      replacement: replacement ?? SizedBox(),
-      child: this!,
-    );
-  }
 
   /// add opacity to parent widget
   Widget opacity({
@@ -150,10 +119,10 @@ extension WidgetExtension on Widget? {
   }) {
     return Transform.scale(
       scale: scale,
-      child: this,
       origin: origin,
       alignment: alignment,
       transformHitTests: transformHitTests,
+      child: this,
     );
   }
 
@@ -166,8 +135,8 @@ extension WidgetExtension on Widget? {
     return Transform.translate(
       offset: offset,
       transformHitTests: transformHitTests,
-      child: this,
       key: key,
+      child: this,
     );
   }
 
@@ -210,15 +179,15 @@ extension WidgetExtension on Widget? {
 
   /// add Flexible to parent widget
   Widget flexible({flex = 1, FlexFit? fit}) {
-    return Flexible(child: this!, flex: flex, fit: fit ?? FlexFit.loose);
+    return Flexible(flex: flex, fit: fit ?? FlexFit.loose, child: this!);
   }
 
   /// add FittedBox to parent widget
   Widget fit({BoxFit? fit, AlignmentGeometry? alignment}) {
     return FittedBox(
-      child: this,
       fit: fit ?? BoxFit.contain,
       alignment: alignment ?? Alignment.center,
+      child: this,
     );
   }
 
@@ -230,13 +199,5 @@ extension WidgetExtension on Widget? {
     return Tooltip(message: msg, child: this);
   }
 
-  /// Validate given widget is not null and returns given value if null.
-  Widget withTooltip({required String msg}) {
-    return Tooltip(message: msg, child: this);
-  }
 
-  /// Make your any widget refreshable with RefreshIndicator on top
-  Widget get makeRefreshable {
-    return Stack(children: [ListView(), this!]);
-  }
 }

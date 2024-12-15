@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,4 +30,10 @@ class DeviceHelper {
   static bool isAndroid(){
     return Platform.isAndroid;
   }
+}
+
+bool checkIfDeviceWide() => Responsive().deviceType() == "desktop" || Responsive().deviceType() == "tablet";
+
+void finish(BuildContext context, [Object? result]) {
+  if (Navigator.canPop(context)) Navigator.pop(context, result);
 }

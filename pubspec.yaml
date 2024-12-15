@@ -33,6 +33,9 @@ dependencies:
 
   intl: ^0.20.1
   auto_size_text_field: ^2.2.4
+  google_fonts: ^6.2.1
+  shared_preferences: ^2.3.3
+  loader_overlay: ^4.0.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -48,8 +51,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
-  google_fonts: ^6.2.1
-  shared_preferences: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -67,6 +68,7 @@ flutter:
     - assets/data/
     - assets/images/
     - assets/images/products/
+    - assets/images/dummy/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

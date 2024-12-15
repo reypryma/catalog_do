@@ -1,4 +1,4 @@
-import 'package:catalog_do/theme/util.dart';
+import 'package:catalog_do/services/util.dart';
 import 'package:flutter/material.dart';
 
 import 'theme/theme.dart';
@@ -67,10 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
+        // Center is a ext widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
+          // Column is also a ext widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
           //
