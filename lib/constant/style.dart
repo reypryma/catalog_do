@@ -1,3 +1,4 @@
+import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 const double sCardElevation = 3;
@@ -92,21 +93,22 @@ bool sSettingsMenuCloseButton = false;
 // Navigation Menu Item Text Color
 
 Color sNavMenuItemColor(BuildContext context) {
-  Color color;
-  Color canvasColor = Theme.of(context).canvasColor;
-
-  if (canvasColor == Theme.of(context).primaryColor) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      color = Colors.blueGrey[800]!;
-    } else {
-      color = Colors.grey[200]!;
-    }
-  } else if (canvasColor == sMenuLight) {
-    color = Colors.blueGrey[800]!;
-  } else {
-    color = Colors.blueGrey[100]!;
-  }
-  return color;
+  // Color color;
+  // Color canvasColor = Theme.of(context).canvasColor;
+  //
+  // if (canvasColor == Theme.of(context).primaryColor) {
+  //   if (Theme.of(context).brightness == Brightness.light) {
+  //     color = Colors.blueGrey[800]!;
+  //   } else {
+  //     color = Colors.grey[200]!;
+  //   }
+  // } else if (canvasColor == sMenuLight) {
+  //   color = Colors.blueGrey[800]!;
+  // } else {
+  //   color = Colors.blueGrey[100]!;
+  // }
+  // return color;
+  return Theme.of(context).colorScheme.tertiary;
 }
 
 TextStyle sNavMenuItem(BuildContext context) {
@@ -123,54 +125,38 @@ Color sNavMenuArrow(BuildContext context) {
 }
 
 // Navigation Menu Item Icon Color
-Color sNavMenuItemIconColor(BuildContext context) {
-  Color color;
-  Color canvasColor = Theme.of(context).canvasColor;
-
-  if (canvasColor == Theme.of(context).primaryColor) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      color = Colors.blueGrey[800]!;
-    } else {
-      color = Colors.grey[200]!;
-    }
-  } else if (Theme.of(context).brightness == Brightness.light) {
-    color = Colors.blueGrey[800]!;
-  } else {
-    color = Colors.white;
-  }
-  return color;
-}
+// Color sNavMenuItemIconColor(BuildContext context) {
+//   Color color;
+//   Color canvasColor = Theme.of(context).canvasColor;
+//
+//   if (canvasColor == Theme.of(context).primaryColor) {
+//     if (Theme.of(context).brightness == Brightness.light) {
+//       color = Colors.blueGrey[800]!;
+//     } else {
+//       color = Colors.grey[200]!;
+//     }
+//   } else if (Theme.of(context).brightness == Brightness.light) {
+//     color = Colors.blueGrey[800]!;
+//   } else {
+//     color = Colors.white;
+//   }
+//   return color;
+// }
 
 // Navigation Menu Item Icon Decoration
 BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
-  Color primaryColor = Theme.of(context).primaryColor;
-  Color canvasColor = Theme.of(context).canvasColor;
+  Color primaryColor = Theme.of(context).colorScheme.surfaceContainerLowest;
 
   return BoxDecoration(
-    color: (canvasColor == primaryColor) ? Colors.black.withOpacity(0.25) : primaryColor,
+    color: primaryColor,
     // borderRadius: BorderRadius.all(Radius.circular(50)),
   );
 }
 
 // Navigation Menu Section Heading
 TextStyle sNavMenuSectionName(BuildContext context) {
-  Color color;
-  Color canvasColor = Theme.of(context).canvasColor;
-
-  if (canvasColor == Theme.of(context).primaryColor) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      color = Colors.blueGrey[800]!;
-    } else {
-      color = Colors.grey[200]!;
-    }
-  } else if (canvasColor == sMenuLight) {
-    color = Colors.blueGrey[500]!;
-  } else {
-    color = Colors.blueGrey[200]!;
-  }
-
   return Theme.of(context).textTheme.bodyMedium!.copyWith(
-    color: color,
+    color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
     fontWeight: FontWeight.w400,
     fontSize: 15.0,
   );
@@ -243,7 +229,6 @@ LinearGradient sBGLinearGradient(BuildContext context, List<Color> colors) {
     begin: const FractionalOffset(0.0, 1.0),
     end: const FractionalOffset(0.0, 0.0),
     stops: [0.0, 1.0],
-    // tileMode: TileMode.clamp,
   );
 }
 
@@ -253,7 +238,6 @@ RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
     radius: 0.7,
     colors: colors,
     stops: [0.1, 0.9],
-    // tileMode: TileMode.clamp,
   );
 }
 
