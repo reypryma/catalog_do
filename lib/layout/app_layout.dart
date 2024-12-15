@@ -1,13 +1,13 @@
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:catalog_do/ui/component/app_background.dart';
 import 'package:catalog_do/ui/component/custom_appbar.dart';
-import 'package:catalog_do/ui/navigation/navigation_menu.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../constant/constant.dart';
 import '../constant/style.dart';
+import '../ui/navigation/navigation_menu.dart';
 
 class AppScaffold extends StatelessWidget {
   final Widget body;
@@ -56,17 +56,6 @@ class AppScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    TextDirection languageDirection;
-
-    bool rtl = (Directionality.of(context) == TextDirection.rtl);
-
-    if (rtl) {
-      languageDirection = TextDirection.rtl;
-    } else {
-      languageDirection = TextDirection.ltr;
-    }
-
     Scaffold scaffold;
     Widget widget;
 
@@ -214,10 +203,7 @@ class AppScaffold extends StatelessWidget {
     }
 
     return SafeArea(
-      child: Directionality(
-        textDirection: languageDirection,
-        child: widget,
-      ),
+      child: widget,
     );
   }
 }
