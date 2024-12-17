@@ -11,7 +11,7 @@ class SettingsComponent extends StatefulWidget {
 
   final void Function(BuildContext)? onTap;
 
-  SettingsComponent({super.key,
+  const SettingsComponent({super.key,
     required this.icon,
     required this.text,
     this.color,
@@ -25,6 +25,15 @@ class SettingsComponent extends StatefulWidget {
 }
 
 class _SettingsComponentState extends State<SettingsComponent> {
+  final _appTheme = AppTheme();
+
+  @override
+  void initState() {
+    super.initState();
+    _appTheme.addListener(() => setState(() {}));
+  }
+
+
   @override
   Widget build(BuildContext context) {
       return GestureDetector(
@@ -39,16 +48,16 @@ class _SettingsComponentState extends State<SettingsComponent> {
                   decoration: BoxDecoration(shape: BoxShape.circle, color: skipbutton),
                   child: Icon(widget.icon, color: widget.color),
                 ),
-                SizedBox(width: 16,),
-                AppText.bodySmall("Delivered", fontWeight: 600, color: Color(0xff00be82)),
+                SizedBox(width: 16),
+                Expanded(child: AppText.bodySmall(widget.text, fontWeight: 600)),
                 if (widget.showSwitch)
                   Switch(
-                    activeTrackColor: scribblrPrimaryColor,
-                    inactiveTrackColor: AppTheme().getTheme().scaffoldBackgroundColor,
+                    activeTrackColor: _appTheme.getTheme().colorScheme.tertiaryFixedDim,
+                    inactiveTrackColor: _appTheme.getTheme().scaffoldBackgroundColor,
                     activeColor: Colors.white,
-                    value: AppTheme().useDarkSkin,
+                    value: _appTheme.usedDarkSkin(),
                     onChanged: (value) {
-
+                      _appTheme.toggleTheme(context);
                     },
                   ),
               ],
