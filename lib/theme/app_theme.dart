@@ -53,9 +53,11 @@ class AppTheme extends ChangeNotifier {
     if (isDarkMode == true) {
       print("_getThemeMode isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
       _themeMode = ThemeMode.dark;
+      useDarkSkin = true;
       notifyListeners();
     } else if (isDarkMode == false) {
       _themeMode = ThemeMode.light;
+      useDarkSkin = false;
       notifyListeners();
     }
   }
