@@ -156,8 +156,8 @@ BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
 // Navigation Menu Section Heading
 TextStyle sNavMenuSectionName(BuildContext context) {
   return Theme.of(context).textTheme.bodyMedium!.copyWith(
-    color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
-    fontWeight: FontWeight.w400,
+    color: Theme.of(context).colorScheme.onTertiaryContainer,
+    fontWeight: FontWeight.w600,
     fontSize: 15.0,
   );
 }
