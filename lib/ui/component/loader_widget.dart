@@ -3,9 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoaderWidget extends StatelessWidget {
   final Color color;
-
   const LoaderWidget({super.key, required this.color});
-
   @override
   Widget build(BuildContext context) {
     return Center(

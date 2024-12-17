@@ -19,10 +19,11 @@ class _ProductDashboardState extends State<ProductDashboard> {
   List<ShProduct> featuredProducts = [];
   var position = 0;
   var colors = [sh_cat_1, sh_cat_2, sh_cat_3, sh_cat_4, sh_cat_5];
-
+  bool _isLoading = true;
 
   @override
   void initState() {
+    super.initState();
     loadCategory();
   }
 
@@ -44,7 +45,7 @@ class _ProductDashboardState extends State<ProductDashboard> {
     }
     List<String> banner = [];
     for (var i = 1; i < 7; i++) {
-      banner.add("images/shophop/img/products/banners/b$i.jpg");
+      banner.add("images/products/banners/b$i.jpg");
     }
     setState(() {
       newestProducts.clear();
@@ -53,11 +54,15 @@ class _ProductDashboardState extends State<ProductDashboard> {
       banners.addAll(banner);
       newestProducts.addAll(products);
       featuredProducts.addAll(featured);
+      _isLoading = false;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+
     return const Placeholder();
   }
 }

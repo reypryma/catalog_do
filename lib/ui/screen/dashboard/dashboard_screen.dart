@@ -51,7 +51,7 @@ class DashboardScreen extends StatelessWidget {
         showFAB: fab ? true : false,
         onPressFAB: () {
           if (fab == true) {
-            Navigator.of(context).pushNamed(pageFAB!);
+            // Navigator.of(context).pushNamed(pageFAB!);
           }
         },
         iconFAB: Icons.add,
