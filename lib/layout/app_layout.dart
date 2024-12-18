@@ -62,12 +62,14 @@ class AppScaffold extends StatelessWidget {
     if (showAppBar == false) {
       scaffold = Scaffold(
         // resizeToAvoidBottomInset: false,
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         body: body,
       );
 
       widget = scaffold;
     } else {
       scaffold = Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         // resizeToAvoidBottomInset: false,
         // Code to remove full width app bar in desktop mode
         appBar: ((Responsive().deviceType() != "desktop" &&
@@ -129,7 +131,7 @@ class AppScaffold extends StatelessWidget {
               image = DecorationImage(
                 repeat: repeat,
                 image: AssetImage(
-                    'assets/images/' + bgSkins[_getBGSkin]!['image']),
+                    "assets/images/" + bgSkins[_getBGSkin]!['image']),
                 fit: fit,
               );
             }
