@@ -60,21 +60,26 @@ class _ProductDashboardState extends State<ProductDashboard> {
   }
 
   @override
+  void setState(fn) {
+    if (mounted) super.setState(fn);
+  }
+
+  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
     return _isLoading ? LoaderWidget(color: Theme.of(context).colorScheme.primary) :
-      Placeholder()
+      _listProductWidget()
     ;
   }
 
   Widget _listProductWidget(){
-      return Column(
+      return newestProducts.isNotEmpty ? Column(
         children: [
 
         ],
-      );
+      ) : Container();
   }
 
 }
