@@ -1,6 +1,7 @@
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/category.dart';
 import 'package:catalog_do/data/repository.dart';
+import 'package:catalog_do/ui/component/loader_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/product.dart';
@@ -24,7 +25,7 @@ class _ProductDashboardState extends State<ProductDashboard> {
   @override
   void initState() {
     super.initState();
-    loadCategory();
+    fetchData();
   }
 
   fetchData() async {
@@ -63,6 +64,17 @@ class _ProductDashboardState extends State<ProductDashboard> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
-    return const Placeholder();
+    return _isLoading ? LoaderWidget(color: Theme.of(context).colorScheme.primary) :
+      Placeholder()
+    ;
   }
+
+  Widget _listProductWidget(){
+      return Column(
+        children: [
+
+        ],
+      );
+  }
+
 }
