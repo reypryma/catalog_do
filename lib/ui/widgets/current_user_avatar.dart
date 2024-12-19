@@ -1,5 +1,5 @@
 import 'package:catalog_do/data/user_data.dart';
-import 'package:catalog_do/ui/component/user_avatar.dart';
+import 'package:catalog_do/ui/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 class CurrentUserAvatar extends StatelessWidget {

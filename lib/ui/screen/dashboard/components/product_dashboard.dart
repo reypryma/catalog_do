@@ -1,7 +1,7 @@
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/category.dart';
 import 'package:catalog_do/data/repository.dart';
-import 'package:catalog_do/ui/component/loader_widget.dart';
+import 'package:catalog_do/ui/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/product.dart';
