@@ -1,7 +1,7 @@
 import 'package:catalog_do/layout/responsive.dart';
-import 'package:catalog_do/ui/component/app_background.dart';
-import 'package:catalog_do/ui/component/custom_appbar.dart';
 import 'package:catalog_do/theme/app_theme.dart';
+import 'package:catalog_do/ui/widgets/app_background.dart';
+import 'package:catalog_do/ui/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
