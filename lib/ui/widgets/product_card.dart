@@ -1,10 +1,9 @@
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/product.dart';
-import 'package:catalog_do/ui/component/user_avatar.dart';
 import 'package:flutter/material.dart';
 
-class BlogCard extends StatelessWidget {
-  const BlogCard({
+class ProductCard extends StatelessWidget {
+  const ProductCard({
     super.key,
     required this.blog,
     // this.showUsers = false,
@@ -27,7 +26,7 @@ class BlogCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
         child: Container(
-          child: BlogItem(blog: blog),
+          child: ProductItem(blog: blog),
         ),
       ),
 
@@ -36,8 +35,8 @@ class BlogCard extends StatelessWidget {
   }
 }
 
-class BlogItem extends StatelessWidget {
-  const BlogItem({
+class ProductItem extends StatelessWidget {
+  const ProductItem({
     Key? key,
     required this.blog,
     this.boxDivider,
@@ -57,28 +56,7 @@ class BlogItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    List<Widget> displayComments = [];
-    List<Widget> displayFullText = [];
-    int fullTextCount = 0;
-    //
-    // // Full Text
-    // if (showFullText == true && blog.fullText != null && blog.fullText!.isNotEmpty) {
-    //   blog.fullText!.forEach((t) {
-    //     fullTextCount++;
-    //     displayFullText.add(
-    //       Padding(
-    //         padding: fullTextCount == blog.fullText!.length ? const EdgeInsets.only(bottom: 0.0) : const EdgeInsets.only(bottom: 15.0),
-    //         child: Text(
-    //           (t ?? ""),
-    //           style: theme.textTheme.bodyMedium,
-    //           // maxLines: textMaxLines,
-    //           // overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
-    //           // style: sText,
-    //         ),
-    //       ),
-    //     );
-    //   });
-    // }
+    var width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5), // sBlogItemInnerPadding,
@@ -98,19 +76,12 @@ class BlogItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // ClipRRect(
-                //   borderRadius: sImageBorderRadius,
-                //   child: ((imageHeight != null)
-                //       ? Image(
-                //     height: imageHeight,
-                //     fit: BoxFit.cover,
-                //     image: AssetImage(blog.images?[0].name ?? ""),
-                //   )
-                //       : Image(
-                //     fit: BoxFit.fill,
-                //     image: AssetImage(blog.media ?? ""),
-                //   )),
-                // ),
+                ClipRRect(
+                  borderRadius: sImageBorderRadius,
+                  child: Image(
+                    fit: BoxFit.fill,
+                    image: AssetImage("images/shophop/img/products${blog.images![0].src!}" ?? ""),
+                  )),
                 SizedBox(height: 10),
                 Container(
                   // color: Colors.red,
