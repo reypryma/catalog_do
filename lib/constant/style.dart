@@ -246,6 +246,27 @@ RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
 // BoxConstraints sPortraitContainer = BoxConstraints(maxWidth: 400);
 BoxConstraints sLandScapeForm = BoxConstraints(maxWidth: 600);
 
+int responsiveColumns(BuildContext context, String deviceType, double deviceWidth, [String? type]) {
+  if (type == "blogs") {
+    if (deviceType == "desktop") {
+      return 3;
+    } else if (deviceType == "tablet") {
+      return 2;
+    } else {
+      return 1;
+    }
+  } else {
+    if (deviceType == "desktop") {
+      return 4;
+    } else if (deviceType == "tablet") {
+      return 3;
+    } else {
+      return 2;
+    }
+  }
+}
+
+
 /*------------------App Images------------------*/
 
 const String imageSignInPortrait = "assets/images/access-3.jpg";
