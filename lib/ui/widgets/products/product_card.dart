@@ -18,18 +18,17 @@ class ProductCard extends StatelessWidget {
     // List<Widget> usersList = [];
 
 
-    return Card(
-      elevation: sCardElevation,
-      shape: RoundedRectangleBorder(
-        borderRadius: sCardBorderRadius,
-      ),
-      child: Padding(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
-        child: Container(
-          child: ProductItem(blog: blog),
+    return Container(
+      child: Card(
+        elevation: sCardElevation,
+        shape: RoundedRectangleBorder(
+          borderRadius: sCardBorderRadius,
+        ),
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
+          child: ProductItem(blog: blog, textMaxLines: 3, imageHeight: 210,),
         ),
       ),
-
     );
     // });
   }
@@ -37,14 +36,14 @@ class ProductCard extends StatelessWidget {
 
 class ProductItem extends StatelessWidget {
   const ProductItem({
-    Key? key,
+    super.key,
     required this.blog,
     this.boxDivider,
     this.showComments = false,
     this.showFullText = false,
     this.imageHeight,
     this.textMaxLines,
-  }) : super(key: key);
+  });
 
   final ShProduct blog;
   final BoxDecoration? boxDivider;
@@ -79,48 +78,25 @@ class ProductItem extends StatelessWidget {
                 ClipRRect(
                   borderRadius: sImageBorderRadius,
                   child: Image(
+                    height: imageHeight,
                     fit: BoxFit.fill,
-                    image: AssetImage("images/shophop/img/products${blog.images![0].src!}" ?? ""),
+                    image: AssetImage("images/products${blog.images![0].src!}" ?? ""),
                   )),
                 SizedBox(height: 10),
-                Container(
-                  // color: Colors.red,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          // Padding(
-                          //   padding: EdgeInsetsDirectional.only(top: 7.0, end: 13.0),
-                          //   child: UserAvatar(
-                          //     user: blog.user,
-                          //     size: 30,
-                          //   ),
-                          // ),
-                          // Text(
-                          //   (blog.user.title),
-                          //   style: theme.textTheme.bodyMedium,
-                          //   // style: sListTitle(context),
-                          // ),
-                        ],
-                      ),
-                      // TimeDifference(from: blog.date),
-                    ],
-                  ),
+                Text(
+                  (blog.description ?? ""),
+                  style: theme.textTheme.bodyMedium,
+                  maxLines: textMaxLines,
+                  overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
+                  // style: sText,
                 ),
                 SizedBox(height: 10),
-                // Text(
-                //   (blog.text ?? ""),
-                //   style: theme.textTheme.bodyMedium,
-                //   maxLines: textMaxLines,
-                //   overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
-                //   // style: sText,
-                // ),
-                SizedBox(height: 10),
-                Row(
-                  children: [
-
-                  ],
+                Text(
+                  (blog.regular_price ?? ""),
+                  style: theme.textTheme.bodyMedium,
+                  maxLines: textMaxLines,
+                  overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
+                  // style: sText,
                 ),
               ],
             ),
