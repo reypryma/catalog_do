@@ -1,7 +1,10 @@
+import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/category.dart';
 import 'package:catalog_do/data/repository.dart';
+import 'package:catalog_do/layout/responsive.dart';
 import 'package:catalog_do/ui/widgets/loader_widget.dart';
+import 'package:catalog_do/ui/widgets/products/product_grid.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/product.dart';
@@ -16,7 +19,6 @@ class ProductDashboard extends StatefulWidget {
 class _ProductDashboardState extends State<ProductDashboard> {
   List<ShCategory> list = [];
   List<String> banners = [];
-  List<ShProduct> newestProducts = [];
   List<ShProduct> featuredProducts = [];
   var position = 0;
   var colors = [sh_cat_1, sh_cat_2, sh_cat_3, sh_cat_4, sh_cat_5];
@@ -35,7 +37,7 @@ class _ProductDashboardState extends State<ProductDashboard> {
         list.addAll(categories);
       });
     }).catchError((error) {
-
+        print(error.message);
     });
     List<ShProduct> products = await loadProducts();
     List<ShProduct> featured = [];
@@ -49,11 +51,9 @@ class _ProductDashboardState extends State<ProductDashboard> {
       banner.add("images/products/banners/b$i.jpg");
     }
     setState(() {
-      newestProducts.clear();
       featuredProducts.clear();
       banners.clear();
       banners.addAll(banner);
-      newestProducts.addAll(products);
       featuredProducts.addAll(featured);
       _isLoading = false;
     });
@@ -75,10 +75,15 @@ class _ProductDashboardState extends State<ProductDashboard> {
   }
 
   Widget _listProductWidget(){
-      return newestProducts.isNotEmpty ? Column(
+      return featuredProducts.isNotEmpty ? Column(
         children: [
-
+          ProductGrid(data: featuredProducts,
+            columns: responsiveColumns(context, Responsive().deviceType(), deviceWidth!, "blogs"),
+            limit: 6,
+            spacing: 10.0,
+          )
         ],
+
       ) : Container();
   }
 
