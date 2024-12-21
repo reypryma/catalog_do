@@ -5,10 +5,18 @@ import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/material.dart';
 
-class DetailProductScreen extends StatelessWidget {
+class DetailProductScreen extends StatefulWidget {
   final ShProduct product;
 
   const DetailProductScreen({super.key, required this.product});
+
+  @override
+  State<DetailProductScreen> createState() => _DetailProductScreenState();
+}
+
+class _DetailProductScreenState extends State<DetailProductScreen> {
+
+  var position = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,7 @@ class DetailProductScreen extends StatelessWidget {
           desktop: DesktopView(
             title: title,
             invisibleAppBar: hideScaffoldAppBar,
-            widget: _buildContent(context),
+            widget: _buildContentMobile(context),
           ),
         ),
       );
@@ -43,7 +51,7 @@ class DetailProductScreen extends StatelessWidget {
             Container(
               constraints: Responsive().contentAreaWidth(),
               child: Padding(
-                padding: Responsive().deviceType() == "desktop" ? sHorizontalGap : EdgeInsets.zero,
+                padding: sHorizontalGap,
                 child: Placeholder()
               ),
             ),
@@ -52,4 +60,41 @@ class DetailProductScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _buildContentMobile(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: sAllSidesGap,
+        child: Column(
+          children: [
+            Container(
+              constraints: Responsive().contentAreaWidth(),
+              child: Padding(
+                  padding: EdgeInsets.zero,
+                  child: Placeholder()
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _displayProductImages(BuildContext context){
+    return Container(
+      height: 550,
+      child: PageView.builder(
+        itemCount: widget.product.images!.length,
+        itemBuilder: (context, index) {
+          return Image.asset("images/products${widget.product.images![index].src!}", width: double.infinity, height: 380, fit: BoxFit.cover);
+        },
+        onPageChanged: (index) {
+          position = index;
+          setState(() {});
+        },
+      ),
+    );
+  }
+
+
 }
