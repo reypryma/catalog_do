@@ -17,7 +17,6 @@ class ProductCard extends StatelessWidget {
     // ThemeData theme = Theme.of(context);
     // List<Widget> usersList = [];
 
-
     return Container(
       child: Card(
         elevation: sCardElevation,

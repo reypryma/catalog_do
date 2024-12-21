@@ -1,11 +1,14 @@
 import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/data/model/product.dart';
 import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/material.dart';
 
 class DetailProductScreen extends StatelessWidget {
-  const DetailProductScreen({super.key});
+  final ShProduct product;
+
+  const DetailProductScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,6 @@ class DetailProductScreen extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
-
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,

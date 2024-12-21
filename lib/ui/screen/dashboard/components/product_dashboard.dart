@@ -5,6 +5,7 @@ import 'package:catalog_do/data/repository.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:catalog_do/ui/widgets/loader_widget.dart';
 import 'package:catalog_do/ui/widgets/products/product_grid.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../data/model/product.dart';
@@ -37,7 +38,9 @@ class _ProductDashboardState extends State<ProductDashboard> {
         list.addAll(categories);
       });
     }).catchError((error) {
-        print(error.message);
+        if (kDebugMode) {
+          print(error);
+        }
     });
     List<ShProduct> products = await loadProducts();
     List<ShProduct> featured = [];
