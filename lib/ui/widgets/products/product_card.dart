@@ -1,3 +1,4 @@
+import 'package:catalog_do/constant/app_text.dart';
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/product.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +15,21 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ThemeData theme = Theme.of(context);
+    ThemeData theme = Theme.of(context);
     // List<Widget> usersList = [];
 
-    return Container(
-      child: Card(
-        elevation: sCardElevation,
-        shape: RoundedRectangleBorder(
-          borderRadius: sCardBorderRadius,
+    return Card(
+      elevation: sCardElevation,
+      shape: RoundedRectangleBorder(
+        borderRadius: sCardBorderRadius,
+        side: BorderSide(
+          color: theme.colorScheme.inversePrimary, // Set the border color
+          width: 1, // Set the border width
         ),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
-          child: ProductItem(blog: blog, textMaxLines: 3, imageHeight: 210,),
-        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
+        child: ProductItem(blog: blog, textMaxLines: 3, imageHeight: 210,),
       ),
     );
     // });
@@ -90,12 +93,16 @@ class ProductItem extends StatelessWidget {
                   // style: sText,
                 ),
                 SizedBox(height: 10),
-                Text(
-                  (blog.regular_price ?? ""),
-                  style: theme.textTheme.bodyMedium,
-                  maxLines: textMaxLines,
-                  overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
-                  // style: sText,
+                // Text(
+                //   (blog.regular_price ?? ""),
+                //   style: theme.textTheme.bodyMedium,
+                //   maxLines: textMaxLines,
+                //   overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
+                //   // style: sText,
+                // ),
+                AppText.bodyLarge(
+                  "\$${blog.regular_price}.00",
+                  fontWeight: 600,
                 ),
               ],
             ),
