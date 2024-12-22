@@ -156,8 +156,8 @@ BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
 // Navigation Menu Section Heading
 TextStyle sNavMenuSectionName(BuildContext context) {
   return Theme.of(context).textTheme.bodyMedium!.copyWith(
-    color: Theme.of(context).colorScheme.onPrimaryFixedVariant,
-    fontWeight: FontWeight.w400,
+    color: Theme.of(context).colorScheme.onTertiaryContainer,
+    fontWeight: FontWeight.w600,
     fontSize: 15.0,
   );
 }
@@ -245,6 +245,27 @@ RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
 // BoxConstraints sLandScapeContainer = BoxConstraints(maxWidth: 1200);
 // BoxConstraints sPortraitContainer = BoxConstraints(maxWidth: 400);
 BoxConstraints sLandScapeForm = BoxConstraints(maxWidth: 600);
+
+int responsiveColumns(BuildContext context, String deviceType, double deviceWidth, [String? type]) {
+  if (type == "blogs") {
+    if (deviceType == "desktop") {
+      return 3;
+    } else if (deviceType == "tablet") {
+      return 2;
+    } else {
+      return 1;
+    }
+  } else {
+    if (deviceType == "desktop") {
+      return 4;
+    } else if (deviceType == "tablet") {
+      return 3;
+    } else {
+      return 2;
+    }
+  }
+}
+
 
 /*------------------App Images------------------*/
 

@@ -10,7 +10,7 @@ class AppTheme extends ChangeNotifier {
   final _localDb = LocalDB();
   late MaterialTheme _materialTheme;
   late int _bgSkin;
-  late bool useDarkSkin;
+  late bool _useDarkSkin;
 
   String? _theme = defaultThemeName;
   String? _mode = defaultMode;
@@ -48,25 +48,34 @@ class AppTheme extends ChangeNotifier {
   ThemeData get darkTheme => _materialTheme.dark();
 
   Future<void> _getThemeMode() async {
-    final isDarkMode = await _localDb.isDarkMode();
+    final isDarkMode = await _localDb.isDarkMode() ?? false;
 
     if (isDarkMode == true) {
       print("_getThemeMode isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
       _themeMode = ThemeMode.dark;
+      _useDarkSkin = true;
       notifyListeners();
     } else if (isDarkMode == false) {
       _themeMode = ThemeMode.light;
+      _useDarkSkin = false;
       notifyListeners();
     }
+  }
+
+  bool usedDarkSkin(){
+    // notifyListeners();
+    return _useDarkSkin;
   }
 
   Future toggleTheme(BuildContext context) async {
     switch (_themeMode) {
       case ThemeMode.light:
         _themeMode = ThemeMode.dark;
+        _useDarkSkin = true;
         break;
       case ThemeMode.dark:
         _themeMode = ThemeMode.light;
+        _useDarkSkin = false;
         break;
       case ThemeMode.system:
         print('Scaffold color #${Theme.of(context).scaffoldBackgroundColor.value.toRadixString(16).substring(2, 8)}');
@@ -74,8 +83,10 @@ class AppTheme extends ChangeNotifier {
 
         if (isDarkMode(context)) {
           _themeMode = ThemeMode.light;
+          _useDarkSkin = false;
         } else {
           _themeMode = ThemeMode.dark;
+          _useDarkSkin = true;
         }
     }
 
@@ -144,12 +155,10 @@ class AppTheme extends ChangeNotifier {
 
 
   ThemeData getTheme() {
-    print("getTheme isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
+    // print("getTheme isDarkMode ${_localDb.loadDynamicLayout('isDarkMode')}");
     if (themeMode ==  ThemeMode.dark) {
-      print("Get Dark Theme");
       return darkTheme;
     } else {
-      print('Get Light Theme');
       return lightTheme;
     }
   }

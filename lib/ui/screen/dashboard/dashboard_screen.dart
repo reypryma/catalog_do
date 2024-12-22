@@ -1,6 +1,7 @@
 import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
+import 'package:catalog_do/ui/screen/dashboard/components/product_dashboard.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/app_text.dart';
@@ -51,7 +52,7 @@ class DashboardScreen extends StatelessWidget {
         showFAB: fab ? true : false,
         onPressFAB: () {
           if (fab == true) {
-            Navigator.of(context).pushNamed(pageFAB!);
+            // Navigator.of(context).pushNamed(pageFAB!);
           }
         },
         iconFAB: Icons.add,
@@ -65,10 +66,12 @@ class DashboardScreen extends StatelessWidget {
 
     return SingleChildScrollView(
       child: Padding(
-        padding: sAllSidesGap,
+        padding: EdgeInsets.all(24),
         child: Column(
           children: [
-            _banner(context, theme)
+            _banner(context, theme),
+            SizedBox(height: 12,),
+            ProductDashboard(),
           ],
         ),
       ),
@@ -76,9 +79,7 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _banner(BuildContext context, ThemeData theme) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 24),
-      child: Stack(
+    return Stack(
         alignment: Alignment.center,
         children: [
           Container(
@@ -121,11 +122,13 @@ class DashboardScreen extends StatelessWidget {
                   letterSpacing: 1,
                   textAlign: TextAlign.center,
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
             ],
           )
         ],
-      ),
     );
   }
 }

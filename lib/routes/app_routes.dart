@@ -14,7 +14,6 @@ class PageRoutes{
     return {
       dashboard: (context) => DashboardScreen(),
       searchProduct: (context) => SearchProductsScreen(),
-      detailProduct: (context) => DetailProductScreen(),
       setting: (context) => SettingScreen()
     };
   }

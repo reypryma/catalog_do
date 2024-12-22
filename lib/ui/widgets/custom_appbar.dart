@@ -1,7 +1,6 @@
 import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/layout/responsive.dart';
-import 'package:catalog_do/ui/component/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 import 'current_user_avatar.dart';

@@ -1,7 +1,7 @@
 import 'package:catalog_do/layout/responsive.dart';
-import 'package:catalog_do/ui/component/app_background.dart';
-import 'package:catalog_do/ui/component/custom_appbar.dart';
 import 'package:catalog_do/theme/app_theme.dart';
+import 'package:catalog_do/ui/widgets/app_background.dart';
+import 'package:catalog_do/ui/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -62,12 +62,14 @@ class AppScaffold extends StatelessWidget {
     if (showAppBar == false) {
       scaffold = Scaffold(
         // resizeToAvoidBottomInset: false,
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         body: body,
       );
 
       widget = scaffold;
     } else {
       scaffold = Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         // resizeToAvoidBottomInset: false,
         // Code to remove full width app bar in desktop mode
         appBar: ((Responsive().deviceType() != "desktop" &&
@@ -129,7 +131,7 @@ class AppScaffold extends StatelessWidget {
               image = DecorationImage(
                 repeat: repeat,
                 image: AssetImage(
-                    'assets/images/' + bgSkins[_getBGSkin]!['image']),
+                    "assets/images/" + bgSkins[_getBGSkin]!['image']),
                 fit: fit,
               );
             }
