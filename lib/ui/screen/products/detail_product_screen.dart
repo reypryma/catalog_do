@@ -25,55 +25,12 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   @override
   Widget build(BuildContext context) {
     String title = "Detail Product";
-    ShProduct product = product;
+    ShProduct product = widget.product;
 
     var colorList = [];
     for (var element in product.attributes!) {
-        if (element.name == 'Color') colorList.addAll(element.options!);
+      if (element.name == 'Color') colorList.addAll(element.options!);
     }
-
-    var colorsView = ListView.builder(
-      scrollDirection: Axis.horizontal,
-      itemCount: colorList.length,
-      shrinkWrap: true,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-
-          },
-          child: Container(
-            padding: EdgeInsets.all(7),
-            margin: EdgeInsets.only(right: 8),
-            decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: sh_textColorPrimary, width: 0.5), color: getColorFromHex(colorList[index])),
-          ),
-        );
-      },
-    );
-
-    var ratingsView = ProductRating(
-      rating: product.rating_count?.toDouble() ?? 0,
-      inactiveColor: _appTheme.getTheme().colorScheme.secondary,
-      activeColor: _appTheme.getTheme().colorScheme.primary,
-    );
-    
-    var categoryListView = product.categories!.isNotEmpty ? ListView.builder(
-      scrollDirection: Axis.horizontal,
-      shrinkWrap: true,
-      itemCount: product.categories!.length,
-      itemBuilder: (_, index){
-        return Chip(label: AppText(product.categories![index].name ?? ""),
-          side: BorderSide(style: BorderStyle.solid, color: _appTheme.getTheme().highlightColor),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        );
-      },
-    ) : SizedBox();
-
-    var productDescriptionView = Column(
-      children: [
-
-      ],
-    );
-
 
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
@@ -83,20 +40,20 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
         body: AppContentView(
           title: title,
           mobile: MobileView(
-            widget: _buildContentMobile(context),
+            widget: _buildContentMobile(context, product, colorList),
           ),
           desktop: DesktopView(
             title: title,
             invisibleAppBar: hideScaffoldAppBar,
-            widget: _buildContent(context),
+            widget: _buildContent(context, product, colorList),
           ),
         ),
       );
     });
   }
 
-  Widget _buildContent(BuildContext context) {
-
+  Widget _buildContent(
+      BuildContext context, ShProduct product, List colorList) {
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
@@ -104,7 +61,15 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           children: [
             Container(
               constraints: Responsive().contentAreaWidth(),
-              child: Padding(padding: sHorizontalGap, child: Placeholder()),
+              child: Padding(
+                  padding: sHorizontalGap,
+                  child: Row(
+                    children: [
+                      // _displayProductImages(context, product, colorList),
+                      // _displayProductDescription(product, colorList)
+                    ],
+                  )
+              ),
             ),
           ],
         ),
@@ -112,7 +77,8 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     );
   }
 
-  Widget _buildContentMobile(BuildContext context) {
+  Widget _buildContentMobile(
+      BuildContext context, ShProduct product, List colorList) {
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
@@ -120,7 +86,17 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           children: [
             Container(
               constraints: Responsive().contentAreaWidth(),
-              child: Padding(padding: EdgeInsets.zero, child: Placeholder()),
+              child: Padding(
+                  padding: EdgeInsets.zero,
+                  child: Column(
+                    children: [
+                      // _displayProductImages(context, widget.product, colorList),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      _displayProductDescription(product, colorList)
+                    ],
+                  )),
             ),
           ],
         ),
@@ -128,21 +104,20 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     );
   }
 
-  Widget _displayProductImages(BuildContext context, ShProduct product) {
+  Widget _displayProductImages(
+      BuildContext context, ShProduct product, List colorList) {
     return Container(
       decoration:
           BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       padding: EdgeInsets.zero,
+      width: 400,
       height: 550,
       child: PageView.builder(
         itemCount: product.images!.length,
         itemBuilder: (context, index) {
-          return Image.asset(
-              "images/products${product.images![index].src!}",
-              width: double.infinity,
-              height: 500,
-              fit: BoxFit.cover);
+          return Image.asset("images/products${product.images![index].src!}",
+              height: 500, fit: BoxFit.cover);
         },
         onPageChanged: (index) {
           position = index;
@@ -152,29 +127,107 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     );
   }
 
-  Widget _displayProductDescription(List<Widget> extraDescriptionWidget, ShProduct product) {
+  Widget _displayProductDescription(ShProduct product, List colorList) {
     return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      padding: EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        padding: EdgeInsets.all(20),
+        child: productDescriptionView(product, colorList));
+  }
+
+  /*
+  *
+  * Build Component
+  *
+  * */
+
+  Widget colorsView(List colorList) => Container(
+    width: 500,
+    height: 200,
+    child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: colorList.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return Container(
+              padding: EdgeInsets.all(7),
+              margin: EdgeInsets.only(right: 8),
+              height: 50,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: sh_textColorPrimary, width: 0.5),
+                  color: getColorFromHex(colorList[index])),
+            );
+          },
+        ),
+  );
+
+  Widget ratingsView(ShProduct product) => ProductRating(
+        rating: product.rating_count?.toDouble() ?? 0,
+        inactiveColor: _appTheme.getTheme().colorScheme.secondary,
+        activeColor: _appTheme.getTheme().colorScheme.primary,
+      );
+
+  Widget categoryListView(ShProduct product) => product.categories!.isNotEmpty
+      ? ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: product.categories!.length,
+          itemBuilder: (_, index) {
+            return Chip(
+              label: AppText(product.categories![index].name ?? ""),
+              side: BorderSide(
+                  style: BorderStyle.solid,
+                  color: _appTheme.getTheme().highlightColor),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              backgroundColor:
+                  _appTheme.getTheme().colorScheme.primary.withOpacity(0.3),
+            );
+          },
+        )
+      : SizedBox();
+
+  Widget productDescriptionView(ShProduct product, List colorList) => Column(
         children: [
+          ratingsView(product),
+          SizedBox(height: 8),
           AppText.titleMedium(
             "${product.name}",
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             fontWeight: 600,
           ),
+          AppText.titleLarge(
+            "Price \$ ${product.price ?? 0}",
+            fontWeight: 600,
+          ),
           SizedBox(
             height: 12,
           ),
-          AppText.bodySmall(""),
-          ...extraDescriptionWidget
+          AppText.titleSmall(
+            'Description',
+            fontWeight: 600,
+          ),
+          SizedBox(height: 8),
+          AppText.bodyLarge(
+            "${product.description}",
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              AppText.labelMedium('Avalaible Color: '),
+              colorsView(colorList)
+            ],
+          ),
+          SizedBox(height: 8),
+          // categoryListView(product)
         ],
-      ),
-    );
-  }
-
+      );
 }
