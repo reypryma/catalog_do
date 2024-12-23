@@ -6,7 +6,7 @@ class ProductRating extends StatelessWidget {
   final bool inactiveStarFilled, showInactive;
   final IconData? activeIcon, halfIcon, inactiveIcon;
 
-  ProductRating(
+  const ProductRating(
       {super.key, this.rating = 5,
         this.size = 16,
         this.spacing = 0,
