@@ -76,7 +76,7 @@ const sh_cat_2 = Color(0xFF34B5C8);
 const sh_cat_3 = Color(0xFFFED76D);
 const sh_cat_4 = Color(0xFF0C5A93);
 const sh_cat_5 = Color(0xFF3CA69B);
-
+const sh_textColorPrimary = Color(0xFF212121);
 
 /*------------------ Navigation Menu Styles ------------------*/
 

@@ -353,8 +353,8 @@
     "shipping_class": "",
     "shipping_class_id": 0,
     "reviews_allowed": true,
-    "average_rating": "3.00",
-    "rating_count": 1,
+    "average_rating": "4.00",
+    "rating_count": 2,
     "related_ids": [],
     "upsell_ids": [],
     "cross_sell_ids": [],
@@ -380,7 +380,7 @@
         "date_modified": "2019-07-19T04:54:51",
         "date_modified_gmt": "2019-07-19T04:54:51",
         "src": "/idalia.webp",
-        "name": "01",
+        "name": "01 idalia",
         "alt": ""
       },
       {
@@ -389,8 +389,8 @@
         "date_created_gmt": "2019-07-19T12:16:45",
         "date_modified": "2019-07-19T12:16:45",
         "date_modified_gmt": "2019-07-19T12:16:45",
-        "src": "/idalia.webp",
-        "name": "02",
+        "src": "/bag_brwon.jpeg",
+        "name": "02 Bag Brown",
         "alt": ""
       },
       {
@@ -400,7 +400,7 @@
         "date_modified": "2019-07-19T12:17:07",
         "date_modified_gmt": "2019-07-19T12:17:07",
         "src": "/idalia.webp",
-        "name": "01",
+        "name": "03 idalia.webp",
         "alt": ""
       },
       {
@@ -409,8 +409,8 @@
         "date_created_gmt": "2019-07-19T12:17:08",
         "date_modified": "2019-07-19T12:17:08",
         "date_modified_gmt": "2019-07-19T12:17:08",
-        "src": "/idalia.webp",
-        "name": "03",
+        "src": "/dress/dress_6.jpeg",
+        "name": "04 Dress 6",
         "alt": ""
       },
       {
@@ -420,7 +420,7 @@
         "date_modified": "2019-07-19T12:17:08",
         "date_modified_gmt": "2019-07-19T12:17:08",
         "src": "/idalia.webp",
-        "name": "02",
+        "name": "07 ade",
         "alt": ""
       },
       {
@@ -429,8 +429,8 @@
         "date_created_gmt": "2019-07-19T12:17:09",
         "date_modified": "2019-07-19T12:17:09",
         "date_modified_gmt": "2019-07-19T12:17:09",
-        "src": "/idalia.webp",
-        "name": "04",
+        "src": "/watch_1.jpg",
+        "name": "08 Watch 1",
         "alt": ""
       }
     ],
@@ -994,7 +994,7 @@
     "shipping_class_id": 0,
     "reviews_allowed": true,
     "average_rating": "3.00",
-    "rating_count": 1,
+    "rating_count": 4,
     "related_ids": [],
     "upsell_ids": [],
     "cross_sell_ids": [],
@@ -1435,7 +1435,7 @@
     "shipping_class": "",
     "shipping_class_id": 0,
     "reviews_allowed": true,
-    "average_rating": "3.00",
+    "average_rating": "1.00",
     "rating_count": 1,
     "related_ids": [],
     "upsell_ids": [],
@@ -1744,7 +1744,7 @@
     "shipping_class": "",
     "shipping_class_id": 0,
     "reviews_allowed": true,
-    "average_rating": "3.00",
+    "average_rating": "2.00",
     "rating_count": 1,
     "related_ids": [],
     "upsell_ids": [],
@@ -2201,7 +2201,7 @@
     "shipping_class_id": 0,
     "reviews_allowed": true,
     "average_rating": "3.00",
-    "rating_count": 1,
+    "rating_count": 3,
     "related_ids": [],
     "upsell_ids": [],
     "cross_sell_ids": [],
@@ -3237,7 +3237,7 @@
         "date_modified": "2019-07-19T12:17:07",
         "date_modified_gmt": "2019-07-19T12:17:07",
         "src": "/watch_1.jpg",
-        "name": "01",
+        "name": "01 Watch",
         "alt": ""
       },
       {
