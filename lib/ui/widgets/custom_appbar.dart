@@ -63,7 +63,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
           padding: EdgeInsetsDirectional.only(start: 10),
           child: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
+            onPressed: (){
+              Navigator.pop(context, () {
+                setState(() {});
+              });
+            },
           ),
         ),
       ));

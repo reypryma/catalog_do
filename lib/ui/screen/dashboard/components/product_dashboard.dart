@@ -38,9 +38,9 @@ class _ProductDashboardState extends State<ProductDashboard> {
         list.addAll(categories);
       });
     }).catchError((error) {
-        if (kDebugMode) {
-          print(error);
-        }
+      if (kDebugMode) {
+        print(error);
+      }
     });
     List<ShProduct> products = await loadProducts();
     List<ShProduct> featured = [];
@@ -72,22 +72,24 @@ class _ProductDashboardState extends State<ProductDashboard> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
 
-    return _isLoading ? LoaderWidget(color: Theme.of(context).colorScheme.primary) :
-      _listProductWidget()
-    ;
+    return _isLoading
+        ? LoaderWidget(color: Theme.of(context).colorScheme.primary)
+        : _listProductWidget();
   }
 
-  Widget _listProductWidget(){
-      return featuredProducts.isNotEmpty ? Column(
-        children: [
-          ProductGrid(data: featuredProducts,
-            columns: responsiveColumns(context, Responsive().deviceType(), deviceWidth!, "blogs"),
-            limit: 6,
-            spacing: 10.0,
+  Widget _listProductWidget() {
+    return featuredProducts.isNotEmpty
+        ? Column(
+            children: [
+              ProductGrid(
+                data: featuredProducts,
+                columns: responsiveColumns(
+                    context, Responsive().deviceType(), deviceWidth!, "blogs"),
+                limit: 6,
+                spacing: 10.0,
+              )
+            ],
           )
-        ],
-
-      ) : Container();
+        : Container();
   }
-
 }

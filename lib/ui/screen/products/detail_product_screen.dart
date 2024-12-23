@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:catalog_do/constant/app_text.dart';
 import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/constant/style.dart';
@@ -72,7 +73,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                   padding: sHorizontalGap,
                   child: Row(
                     children: [
-                      // _displayProductImages(context, product, colorList),
+                      Expanded(child: _displayProductImages(context, product, colorList)),
                       Flexible(
                           flex: 2,
                           child: _displayProductDescription(product, colorList))
@@ -114,24 +115,72 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
 
   Widget _displayProductImages(
       BuildContext context, ShProduct product, List colorList) {
-    return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      padding: EdgeInsets.zero,
-      // width: 400,
-      height: 550,
-      child: PageView.builder(
-        itemCount: product.images!.length,
-        itemBuilder: (context, index) {
-          return Image.asset("images/products${product.images![index].src!}",
-              height: 300, width: 300, fit: BoxFit.cover);
-        },
-        onPageChanged: (index) {
-          position = index;
-          setState(() {});
-        },
+    // return Container(
+    //   decoration:
+    //       BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
+    //   clipBehavior: Clip.antiAliasWithSaveLayer,
+    //   padding: EdgeInsets.zero,
+    //   // width: 400,
+    //   height: 550,
+    //   child: PageView.builder(
+    //     itemCount: product.images!.length,
+    //     itemBuilder: (context, index) {
+    //       return Image.asset("images/products${product.images![index].src!}",
+    //           height: 300, width: 300, fit: BoxFit.cover);
+    //     },
+    //     onPageChanged: (index) {
+    //       position = index;
+    //       setState(() {});
+    //     },
+    //   ),
+    // );
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: 400.0,
+        autoPlay: true,
+        aspectRatio: 2.0,
+        enlargeCenterPage: true,
       ),
+      items: product.images!.map((image) {
+        return Container(
+          margin: EdgeInsets.all(5.0),
+          child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              child: Stack(
+                children: <Widget>[
+                  Image.asset("images/products${image.src!}",
+                      height: 300, width: 300, fit: BoxFit.cover),
+                  Positioned(
+                    bottom: 0.0,
+                    left: 0.0,
+                    right: 0.0,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color.fromARGB(200, 0, 0, 0),
+                            Color.fromARGB(0, 0, 0, 0)
+                          ],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 20.0),
+                      child: Text(
+                        '${image.name}',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )),
+        );
+      }).toList(),
     );
   }
 
@@ -146,7 +195,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         padding: EdgeInsets.all(20),
-        child: productDescriptionView(product, colorList));
+        child: _productDescriptionView(product, colorList));
   }
 
   /*
@@ -155,7 +204,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   *
   * */
 
-  Widget colorsView(List colorList) => SizedBox(
+  Widget _colorsView(List colorList) => SizedBox(
         width: 500,
         height: 20,
         child: ListView.builder(
@@ -176,12 +225,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
         ),
       );
 
-  Widget categoryListView(ShProduct product) => product.categories!.isNotEmpty
+  Widget _categoryListView(ShProduct product) => product.categories!.isNotEmpty
       ? SizedBox(
-        width: deviceWidth,
-        height: 40,
-        child: ListView.builder(
-            clipBehavior: Clip.hardEdge,scrollDirection: Axis.horizontal,
+          width: deviceWidth,
+          height: 40,
+          child: ListView.builder(
+            clipBehavior: Clip.hardEdge,
+            scrollDirection: Axis.horizontal,
             shrinkWrap: true,
             itemCount: product.categories!.length,
             itemBuilder: (_, index) {
@@ -200,13 +250,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
               );
             },
           ),
-      )
+        )
       : SizedBox();
 
-  Widget productDescriptionView(ShProduct product, List colorList) => Column(
+  Widget _productDescriptionView(ShProduct product, List colorList) => Column(
         children: [
           ProductRating(
-            rating: double.parse(product.average_rating ?? "0" ),
+            rating: double.parse(product.average_rating ?? "0"),
             inactiveColor: _appTheme.getTheme().colorScheme.secondary,
             activeColor: _appTheme.getTheme().colorScheme.primary,
           ),
@@ -241,11 +291,11 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               AppText.labelMedium('Available Color: '),
-              Expanded(child: colorsView(colorList))
+              Expanded(child: _colorsView(colorList))
             ],
           ),
           SizedBox(height: 8),
-          categoryListView(product)
+          _categoryListView(product)
         ],
       );
 }
