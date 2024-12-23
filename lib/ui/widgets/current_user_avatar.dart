@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 
 class CurrentUserAvatar extends StatelessWidget {
   const CurrentUserAvatar({
-    Key? key,
+    super.key,
     this.onTapAction = "",
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final String? onTapAction;
   final Function onTap;
