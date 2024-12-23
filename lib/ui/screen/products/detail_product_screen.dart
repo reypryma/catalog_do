@@ -23,6 +23,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   AppTheme _appTheme = AppTheme();
 
   @override
+  void initState() {
+    super.initState();
+    debugPrint(widget.product.average_rating);
+    debugPrint("images count ${widget.product.images?.length}");
+  }
+
+  @override
   Widget build(BuildContext context) {
     String title = "Detail Product";
     ShProduct product = widget.product;
@@ -66,10 +73,11 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                   child: Row(
                     children: [
                       // _displayProductImages(context, product, colorList),
-                      // _displayProductDescription(product, colorList)
+                      Flexible(
+                          flex: 2,
+                          child: _displayProductDescription(product, colorList))
                     ],
-                  )
-              ),
+                  )),
             ),
           ],
         ),
@@ -90,7 +98,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                   padding: EdgeInsets.zero,
                   child: Column(
                     children: [
-                      // _displayProductImages(context, widget.product, colorList),
+                      _displayProductImages(context, widget.product, colorList),
                       SizedBox(
                         height: 24,
                       ),
@@ -111,13 +119,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
       clipBehavior: Clip.antiAliasWithSaveLayer,
       padding: EdgeInsets.zero,
-      width: 400,
+      // width: 400,
       height: 550,
       child: PageView.builder(
         itemCount: product.images!.length,
         itemBuilder: (context, index) {
           return Image.asset("images/products${product.images![index].src!}",
-              height: 500, fit: BoxFit.cover);
+              height: 300, width: 300, fit: BoxFit.cover);
         },
         onPageChanged: (index) {
           position = index;
@@ -129,8 +137,13 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
 
   Widget _displayProductDescription(ShProduct product, List colorList) {
     return Container(
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          color: _appTheme.getTheme().colorScheme.surface,
+          border: Border.all(
+              color: _appTheme.getTheme().colorScheme.primaryContainer,
+              width: 0.5),
+        ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
         padding: EdgeInsets.all(20),
         child: productDescriptionView(product, colorList));
@@ -142,10 +155,10 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   *
   * */
 
-  Widget colorsView(List colorList) => Container(
-    width: 500,
-    height: 200,
-    child: ListView.builder(
+  Widget colorsView(List colorList) => SizedBox(
+        width: 500,
+        height: 20,
+        child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: colorList.length,
           shrinkWrap: true,
@@ -161,37 +174,42 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             );
           },
         ),
-  );
-
-  Widget ratingsView(ShProduct product) => ProductRating(
-        rating: product.rating_count?.toDouble() ?? 0,
-        inactiveColor: _appTheme.getTheme().colorScheme.secondary,
-        activeColor: _appTheme.getTheme().colorScheme.primary,
       );
 
   Widget categoryListView(ShProduct product) => product.categories!.isNotEmpty
-      ? ListView.builder(
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemCount: product.categories!.length,
-          itemBuilder: (_, index) {
-            return Chip(
-              label: AppText(product.categories![index].name ?? ""),
-              side: BorderSide(
-                  style: BorderStyle.solid,
-                  color: _appTheme.getTheme().highlightColor),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              backgroundColor:
-                  _appTheme.getTheme().colorScheme.primary.withOpacity(0.3),
-            );
-          },
-        )
+      ? SizedBox(
+        width: deviceWidth,
+        height: 40,
+        child: ListView.builder(
+            clipBehavior: Clip.hardEdge,scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: product.categories!.length,
+            itemBuilder: (_, index) {
+              return Padding(
+                padding: const EdgeInsets.only(right: 4.0),
+                child: Chip(
+                  label: AppText(product.categories![index].name ?? ""),
+                  side: BorderSide(
+                      style: BorderStyle.solid,
+                      color: _appTheme.getTheme().highlightColor),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  backgroundColor:
+                      _appTheme.getTheme().colorScheme.primary.withOpacity(0.3),
+                ),
+              );
+            },
+          ),
+      )
       : SizedBox();
 
   Widget productDescriptionView(ShProduct product, List colorList) => Column(
         children: [
-          ratingsView(product),
+          ProductRating(
+            rating: double.parse(product.average_rating ?? "0" ),
+            inactiveColor: _appTheme.getTheme().colorScheme.secondary,
+            activeColor: _appTheme.getTheme().colorScheme.primary,
+          ),
           SizedBox(height: 8),
           AppText.titleMedium(
             "${product.name}",
@@ -222,12 +240,12 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              AppText.labelMedium('Avalaible Color: '),
-              colorsView(colorList)
+              AppText.labelMedium('Available Color: '),
+              Expanded(child: colorsView(colorList))
             ],
           ),
           SizedBox(height: 8),
-          // categoryListView(product)
+          categoryListView(product)
         ],
       );
 }
