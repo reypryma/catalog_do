@@ -21,7 +21,7 @@ class DetailProductScreen extends StatefulWidget {
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
   var position = 0;
-  AppTheme _appTheme = AppTheme();
+  final AppTheme _appTheme = AppTheme();
 
   @override
   void initState() {
