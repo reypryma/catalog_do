@@ -84,7 +84,9 @@ class _ProductDashboardState extends State<ProductDashboard> {
               ProductGrid(
                 data: featuredProducts,
                 columns: responsiveColumns(
-                    context, Responsive().deviceType(), deviceWidth!, "blogs"),
+                    context,
+                    Responsive().deviceType(),
+                    deviceWidth!, "blogs"),
                 limit: 6,
                 spacing: 10.0,
               )
