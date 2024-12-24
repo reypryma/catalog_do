@@ -32,6 +32,13 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget _buildContent(BuildContext context) {
     AppTheme appTheme = AppTheme();
 
-    return Placeholder();
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+
+        ],
+      ),
+    );
   }
 }
