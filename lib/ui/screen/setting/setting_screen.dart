@@ -16,7 +16,6 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   @override
-  @override
   Widget build(BuildContext context) {
     String title = "App Setting";
 
