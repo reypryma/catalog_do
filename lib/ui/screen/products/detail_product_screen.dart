@@ -10,6 +10,8 @@ import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/ui/screen/products/components/product_rating.dart';
 import 'package:flutter/material.dart';
 
+import 'components/category_list.dart';
+
 class DetailProductScreen extends StatefulWidget {
   final ShProduct product;
 
@@ -41,6 +43,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     }
 
     return LayoutBuilder(builder: (context, constraints) {
+      debugPrint( "constraint $constraints");
       return AppScaffold(
         title: title,
         backbutton: "show",
@@ -115,25 +118,6 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
 
   Widget _displayProductImages(
       BuildContext context, ShProduct product, List colorList) {
-    // return Container(
-    //   decoration:
-    //       BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
-    //   clipBehavior: Clip.antiAliasWithSaveLayer,
-    //   padding: EdgeInsets.zero,
-    //   // width: 400,
-    //   height: 550,
-    //   child: PageView.builder(
-    //     itemCount: product.images!.length,
-    //     itemBuilder: (context, index) {
-    //       return Image.asset("images/products${product.images![index].src!}",
-    //           height: 300, width: 300, fit: BoxFit.cover);
-    //     },
-    //     onPageChanged: (index) {
-    //       position = index;
-    //       setState(() {});
-    //     },
-    //   ),
-    // );
     return CarouselSlider(
       options: CarouselOptions(
         height: 400.0,
@@ -148,8 +132,8 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
               borderRadius: BorderRadius.all(Radius.circular(5.0)),
               child: Stack(
                 children: <Widget>[
-                  Image.asset("images/products${image.src!}",
-                      height: 300, width: 300, fit: BoxFit.cover),
+                  Image.asset(image.src!,
+                      height: 300, width: double.infinity, fit: BoxFit.cover),
                   Positioned(
                     bottom: 0.0,
                     left: 0.0,
@@ -225,35 +209,43 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
         ),
       );
 
-  Widget _categoryListView(ShProduct product) => product.categories!.isNotEmpty
-      ? SizedBox(
-          width: deviceWidth,
-          height: 40,
-          child: ListView.builder(
-            clipBehavior: Clip.hardEdge,
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: product.categories!.length,
-            itemBuilder: (_, index) {
-              return Padding(
-                padding: const EdgeInsets.only(right: 4.0),
-                child: Chip(
-                  label: AppText(product.categories![index].name ?? ""),
-                  side: BorderSide(
-                      style: BorderStyle.solid,
-                      color: _appTheme.getTheme().highlightColor),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  backgroundColor:
-                      _appTheme.getTheme().colorScheme.primary.withOpacity(0.3),
+  Widget _categoryListView(ShProduct product) {
+    return product.categories!.isNotEmpty
+        ? Container(
+      height: 40, // Set the fixed height for the Chip list
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        physics: BouncingScrollPhysics(),
+        child: Row(
+          children: product.categories!.map((category) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 4.0),
+              child: Chip(
+                label: AppText(category.name ?? ""),
+                side: BorderSide(
+                  style: BorderStyle.solid,
+                  color: _appTheme.getTheme().highlightColor,
                 ),
-              );
-            },
-          ),
-        )
-      : SizedBox();
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                backgroundColor: _appTheme
+                    .getTheme()
+                    .colorScheme
+                    .primary
+                    .withOpacity(0.3),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    )
+        : SizedBox();
+  }
 
-  Widget _productDescriptionView(ShProduct product, List colorList) => Column(
+  Widget _productDescriptionView(ShProduct product, List colorList) {
+    List<String> categories = product.categories != null ? product.categories!.map((e) => e.name!,).toList() : <String>[];
+    return Column(
         children: [
           ProductRating(
             rating: double.parse(product.average_rating ?? "0"),
@@ -285,7 +277,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             overflow: TextOverflow.ellipsis,
           ),
           SizedBox(
-            height: 8,
+            height: 12,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -294,8 +286,9 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
               Expanded(child: _colorsView(colorList))
             ],
           ),
-          SizedBox(height: 8),
-          _categoryListView(product)
+          SizedBox(height: 32),
+          CategoryListView(categories: categories,)
         ],
       );
+  }
 }
