@@ -68,7 +68,7 @@ class NavigationMenuHeader extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         // Navigator.pop(context);
-                        Navigator.of(context).pushNamed('profile-edit');
+                        // Navigator.of(context).pushNamed('profile');
                       },
                       child: Text(
                         ("EditProfile"),
