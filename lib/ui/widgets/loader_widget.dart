@@ -8,8 +8,8 @@ class LoaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
         child: SpinKitRing(
           color: color,
           size: 50,
