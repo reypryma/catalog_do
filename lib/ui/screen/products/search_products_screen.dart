@@ -1,6 +1,4 @@
 import 'package:catalog_do/layout/app_layout.dart';
-import 'package:catalog_do/theme/app_theme.dart';
-import 'package:catalog_do/ui/widgets/search_catalog.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constant/constant.dart';

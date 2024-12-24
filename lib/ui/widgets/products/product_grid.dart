@@ -24,6 +24,8 @@ class ProductGrid extends StatelessWidget {
     bool allow = true;
 
     for (var element in data) {
+      debugPrint("Image locate : ${element.images![0].src}");
+
       if (allow) {
         items.add(MouseRegion(
           cursor: SystemMouseCursors.click,

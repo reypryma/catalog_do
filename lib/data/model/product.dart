@@ -103,7 +103,7 @@ class ShProduct {
   String? average_rating;
 
   // ignore: non_constant_identifier_names
-  double? rating_count;
+  int? rating_count;
 
   // ignore: non_constant_identifier_names
   List<dynamic>? related_ids;
