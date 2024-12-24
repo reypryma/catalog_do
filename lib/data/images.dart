@@ -9,6 +9,7 @@ class Images {
   static String background = 'assets/images/dummy/dummy_1.jpg';
 
   static String counter = 'assets/dummy/counter.png';
+  static String currentUser = 'assets/images/user-1.jpg';
 
   /// Avatars ///
   static List<String> avatars = List.generate(10, (index) => 'assets/avatar/${index + 1}.png');

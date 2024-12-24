@@ -1,3 +1,4 @@
+import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/data/menu_data.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class NavigationMenuHeader extends StatelessWidget {
         decoration: BoxDecoration(
           color: theme.primaryColor,
           image: DecorationImage(
-            image: AssetImage("assets/images/menu-user-full.jpg"),
+            image: AssetImage(Images.currentUser),
             fit: BoxFit.cover,
           ),
         ),

@@ -54,7 +54,7 @@ Future<List<String>> loadBanners() async {
 
   products.forEach((product) {
     if (product.images!.isNotEmpty) {
-      banner.add("images/products${product.images![0].src!}");
+      banner.add("${product.images![0].src!}");
     }
   });
   return banner;
