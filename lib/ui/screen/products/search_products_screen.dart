@@ -5,8 +5,21 @@ import '../../../constant/constant.dart';
 import '../../../constant/style.dart';
 import '../../../layout/responsive.dart';
 
-class SearchProductsScreen extends StatelessWidget {
+class SearchProductsScreen extends StatefulWidget {
   const SearchProductsScreen({super.key});
+
+  @override
+  State<SearchProductsScreen> createState() => _SearchProductsScreenState();
+}
+
+class _SearchProductsScreenState extends State<SearchProductsScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
