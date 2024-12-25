@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:catalog_do/constant/app_text.dart';
-import 'package:catalog_do/constant/constant.dart';
-import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/layout/app_text.dart';
+import 'package:catalog_do/constant/variable_constant.dart';
+import 'package:catalog_do/constant/style_constant.dart';
 import 'package:catalog_do/data/model/product.dart';
 import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/layout/responsive.dart';
@@ -43,10 +43,9 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     }
 
     return LayoutBuilder(builder: (context, constraints) {
-      debugPrint( "constraint $constraints");
       return AppScaffold(
         title: title,
-        backbutton: "show",
+        backButton: "show",
         invisibleAppBar: hideScaffoldAppBar,
         body: AppContentView(
           title: title,
@@ -202,47 +201,12 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
               height: 50,
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  border: Border.all(color: sh_textColorPrimary, width: 0.5),
+                  border: Border.all(color: _appTheme.getTheme().colorScheme.scrim, width: 0.5),
                   color: getColorFromHex(colorList[index])),
             );
           },
         ),
       );
-
-  Widget _categoryListView(ShProduct product) {
-    return product.categories!.isNotEmpty
-        ? Container(
-      height: 40, // Set the fixed height for the Chip list
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        physics: BouncingScrollPhysics(),
-        child: Row(
-          children: product.categories!.map((category) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 4.0),
-              child: Chip(
-                label: AppText(category.name ?? ""),
-                side: BorderSide(
-                  style: BorderStyle.solid,
-                  color: _appTheme.getTheme().highlightColor,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                backgroundColor: _appTheme
-                    .getTheme()
-                    .colorScheme
-                    .primary
-                    .withOpacity(0.3),
-              ),
-            );
-          }).toList(),
-        ),
-      ),
-    )
-        : SizedBox();
-  }
-
   Widget _productDescriptionView(ShProduct product, List colorList) {
     List<String> categories = product.categories != null ? product.categories!.map((e) => e.name!,).toList() : <String>[];
     return Column(

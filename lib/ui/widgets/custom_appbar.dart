@@ -1,6 +1,7 @@
-import 'package:catalog_do/constant/constant.dart';
-import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/constant/variable_constant.dart';
+import 'package:catalog_do/constant/style_constant.dart';
 import 'package:catalog_do/layout/responsive.dart';
+import 'package:catalog_do/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 import 'current_user_avatar.dart';
@@ -8,7 +9,7 @@ import 'current_user_avatar.dart';
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Widget title;
   final String menu;
-  final String backbutton;
+  final String backButton;
   final bool settings;
   final String? viewOn;
   final List<Widget>? topBarActions;
@@ -20,17 +21,17 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
     super.key,
     required this.title,
     required this.menu,
-    required this.backbutton,
+    required this.backButton,
     this.centerAlign = false,
     this.settings = true,
     this.viewOn = "",
     this.leadingWidth,
     this.topBarActions,
     this.topBarLeadingActions,
-  })  : preferredSize = Size.fromHeight(kToolbarHeight);
+  }) : preferredSize = Size.fromHeight(kToolbarHeight);
 
   @override
-  final Size preferredSize; // default is 56.0
+  final Size preferredSize;
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -55,7 +56,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ));
     }
 
-    if ((widget.backbutton == "show")) {
+    if ((widget.backButton == "show")) {
       leading.add(SizedBox(
         height: 40,
         width: 40,
@@ -63,7 +64,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           padding: EdgeInsetsDirectional.only(start: 10),
           child: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: (){
+            onPressed: () {
               Navigator.pop(context, () {
                 setState(() {});
               });
@@ -97,12 +98,10 @@ class _CustomAppBarState extends State<CustomAppBar> {
       if (pageHeaderIcons.contains("settings")) {
         actions.add(
           Padding(
-            padding: EdgeInsets.only(
-              // right: ((widget.viewOn == "desktop") ? 15 : 2),
-            ),
+            padding: EdgeInsets.zero,
             child: IconButton(
-              icon: Icon(iconSettings),
-              onPressed: () => Scaffold.of(context).openEndDrawer(),
+              icon: Icon(iconSignOut),
+              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(PageRoutes.auth, (Route<dynamic> route) => false),
             ),
           ),
         );
@@ -129,13 +128,12 @@ class _CustomAppBarState extends State<CustomAppBar> {
         centerTitle: widget.centerAlign ?? false,
         titleSpacing: ((widget.viewOn == "desktop") ? 24 : 4),
         title: widget.title,
-        leading: ((leading.isNotEmpty)
-            ? Row(children: leading)
-            : null),
+        leading: ((leading.isNotEmpty) ? Row(children: leading) : null),
         actions: [
           Builder(
             builder: (context) => Padding(
-              padding: EdgeInsetsDirectional.only(end: widget.viewOn == "desktop" ? 15.0 : 2.0 ),
+              padding: EdgeInsetsDirectional.only(
+                  end: widget.viewOn == "desktop" ? 15.0 : 2.0),
               child: Row(children: actions),
             ),
           ),

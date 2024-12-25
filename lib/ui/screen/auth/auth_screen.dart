@@ -1,11 +1,11 @@
-import 'package:catalog_do/constant/app_text.dart';
+import 'package:catalog_do/layout/app_text.dart';
 import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/routes/app_routes.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constant/constant.dart';
+import '../../../constant/variable_constant.dart';
 import '../../../layout/responsive.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -99,7 +99,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   children: [
                     Image.asset(Images.googleLogo, height: 25, width: 25, fit: BoxFit.cover, color:  _appTheme.getTheme().colorScheme.onSecondaryFixed, alignment: Alignment.center),
                     SizedBox(width: 8,),
-                    AppText.labelSmall("Sign In With Google")
+                    AppText.labelSmall("Sign In With Google", overflow: TextOverflow.clip,)
                   ],
                 ),
             ),),
@@ -121,7 +121,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   children: [
                     Image.asset(Images.appleLogo, height: 25, width: 25, fit: BoxFit.cover, color:  _appTheme.getTheme().colorScheme.onSecondaryFixed, alignment: Alignment.center),
                     SizedBox(width: 8,),
-                    AppText.labelSmall("Sign In With Apple")
+                    AppText.labelSmall("Sign In With Apple", overflow: TextOverflow.clip)
                   ],
                 ),
               ),
@@ -153,7 +153,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 children: [
                   Image.asset(Images.googleLogo, height: 25, width: 25, fit: BoxFit.cover, color:  _appTheme.getTheme().colorScheme.onSecondaryFixed, alignment: Alignment.center),
                   SizedBox(width: 8,),
-                  AppText.labelSmall("Sign In With Google")
+                  AppText.labelSmall("Sign In With Google", overflow: TextOverflow.clip,)
                 ],
               ),
             ),),
@@ -172,7 +172,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 children: [
                   Image.asset(Images.appleLogo, height: 25, width: 25, fit: BoxFit.cover, color:  _appTheme.getTheme().colorScheme.onSecondaryFixed, alignment: Alignment.center),
                   SizedBox(width: 8,),
-                  AppText.labelSmall("Sign In With Apple")
+                  AppText.labelSmall("Sign In With Apple", overflow: TextOverflow.clip,)
                 ],
               ),
             ),

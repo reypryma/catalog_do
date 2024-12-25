@@ -1,4 +1,4 @@
-import 'package:catalog_do/constant/app_text.dart';
+import 'package:catalog_do/layout/app_text.dart';
 import 'package:catalog_do/data/model/product.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';

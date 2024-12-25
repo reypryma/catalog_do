@@ -2,7 +2,7 @@ import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/data/menu_data.dart';
 import 'package:flutter/material.dart';
 
-import '../../constant/style.dart';
+import '../../constant/style_constant.dart';
 
 class NavigationMenuHeader extends StatelessWidget {
   const NavigationMenuHeader({

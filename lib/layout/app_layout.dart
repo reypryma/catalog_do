@@ -1,12 +1,9 @@
 import 'package:catalog_do/layout/responsive.dart';
-import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/ui/widgets/app_background.dart';
 import 'package:catalog_do/ui/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-import '../constant/constant.dart';
-import '../constant/style.dart';
+import '../constant/style_constant.dart';
 import '../ui/navigation/navigation_menu.dart';
 
 class AppScaffold extends StatelessWidget {
@@ -14,7 +11,7 @@ class AppScaffold extends StatelessWidget {
   final String title;
   final String menu;
   final bool? settings;
-  final String backbutton;
+  final String backButton;
   final bool? showAppBar;
   final bool hasTabs;
   final int tabsLength;
@@ -31,12 +28,13 @@ class AppScaffold extends StatelessWidget {
   final bool? confirmAppExit;
   final Function? onTapTitle;
 
-  const AppScaffold({super.key,
+  const AppScaffold({
+    super.key,
     this.title = "",
     required this.body,
     this.menu = "",
     this.settings = true,
-    this.backbutton = "",
+    this.backButton = "",
     this.showAppBar,
     this.hasTabs = false,
     this.tabsLength = 0,
@@ -61,7 +59,6 @@ class AppScaffold extends StatelessWidget {
 
     if (showAppBar == false) {
       scaffold = Scaffold(
-        // resizeToAvoidBottomInset: false,
         backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         body: body,
       );
@@ -70,8 +67,6 @@ class AppScaffold extends StatelessWidget {
     } else {
       scaffold = Scaffold(
         backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-        // resizeToAvoidBottomInset: false,
-        // Code to remove full width app bar in desktop mode
         appBar: ((Responsive().deviceType() != "desktop" &&
                 invisibleAppBar == false)
             ? CustomAppBar(
@@ -84,7 +79,7 @@ class AppScaffold extends StatelessWidget {
                   },
                 ),
                 menu: menu,
-                backbutton: backbutton,
+                backButton: backButton,
                 settings: settings ?? true,
                 topBarActions: topBarActions,
                 topBarLeadingActions: topBarLeadingActions,
@@ -101,49 +96,9 @@ class AppScaffold extends StatelessWidget {
         endDrawer: null,
         // body: body,
         body: LayoutBuilder(builder: (context, _) {
-          int _getBGSkin = AppTheme().buildBGSkin(context);
-
-          Gradient? gradient;
-          if (bgSkins.isNotEmpty) {
-            if (bgSkins[_getBGSkin]!.containsKey("gradient")) {
-              if (bgSkins[_getBGSkin]!["gradient"] == "linear") {
-                gradient =
-                    sBGLinearGradient(context, bgSkins[_getBGSkin]!["colors"]);
-              } else if (bgSkins[_getBGSkin]!["gradient"] == "radial") {
-                gradient =
-                    sBGRadialGradient(context, bgSkins[_getBGSkin]!["colors"]);
-              }
-            }
-          }
-
-          DecorationImage? image;
-          if (bgSkins.isNotEmpty) {
-            if (bgSkins[_getBGSkin]!.containsKey("image")) {
-              ImageRepeat repeat = ImageRepeat.noRepeat;
-              BoxFit fit = BoxFit.cover;
-              if (bgSkins[_getBGSkin]!.containsKey("repeat")) {
-                repeat = bgSkins[_getBGSkin]!["repeat"];
-              }
-              if (bgSkins[_getBGSkin]!.containsKey("fit")) {
-                fit = bgSkins[_getBGSkin]!["fit"];
-              }
-
-              image = DecorationImage(
-                repeat: repeat,
-                image: AssetImage(
-                    "assets/images/" + bgSkins[_getBGSkin]!['image']),
-                fit: fit,
-              );
-            }
-          }
-
           Widget bodyWidget = AppBackground(body: body);
 
           return Container(
-            decoration: BoxDecoration(
-              image: image,
-              gradient: gradient,
-            ),
             child: bodyWidget,
           );
         }),
@@ -162,39 +117,6 @@ class AppScaffold extends StatelessWidget {
       );
 
       widget = scaffold;
-
-      if (confirmAppExit == true) {
-        widget = WillPopScope(
-          onWillPop: () {
-            showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: Text(""),
-                    content: Text(""),
-                    actions: <Widget>[
-                      ElevatedButton(
-                        child: Text("Yes"),
-                        onPressed: () {
-                          // Navigator.pop(context);
-                          SystemNavigator.pop();
-                        },
-                      ),
-                      ElevatedButton(
-                        child: Text("No"),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
-                    ],
-                  );
-                });
-            return Future.value(true);
-          },
-          child: scaffold,
-        );
-      }
 
       if (hasTabs == true) {
         widget = DefaultTabController(
@@ -218,7 +140,8 @@ class AppContentView extends StatelessWidget {
   final bool showMenu;
 
   const AppContentView(
-      {super.key, required this.mobile,
+      {super.key,
+      required this.mobile,
       this.desktop,
       this.tablet,
       this.title,
@@ -226,7 +149,7 @@ class AppContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("responsive ${Responsive().deviceType()} status $showMenu");
+    debugPrint("responsive ${Responsive().deviceType()} status $showMenu");
     // Desktop View
     if (Responsive().deviceType() == "desktop" && showMenu == true) {
       return Row(
@@ -237,7 +160,7 @@ class AppContentView extends StatelessWidget {
           ),
         ],
       );
-    } else if (Responsive().deviceType() == "desktop" && showMenu == false){
+    } else if (Responsive().deviceType() == "desktop" && showMenu == false) {
       return desktop ?? mobile;
     }
 
@@ -312,7 +235,7 @@ class DesktopView extends StatelessWidget {
           CustomAppBar(
             title: Text(title),
             menu: menu,
-            backbutton: backbutton,
+            backButton: backbutton,
             viewOn: "desktop",
           ),
           Expanded(

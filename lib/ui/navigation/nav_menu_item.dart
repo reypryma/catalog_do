@@ -1,8 +1,8 @@
-import 'package:catalog_do/constant/style.dart';
 import 'package:catalog_do/data/model/nav_menu_item.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
+import '../../constant/style_constant.dart';
 import 'nav_menu_item_action.dart';
 
 class NavigationMenuItem extends StatelessWidget {

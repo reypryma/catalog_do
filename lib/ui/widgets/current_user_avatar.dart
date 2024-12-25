@@ -8,10 +8,8 @@ class CurrentUserAvatar extends StatelessWidget {
     this.onTapAction = "",
     required this.onTap,
   });
-
   final String? onTapAction;
   final Function onTap;
-
   @override
   Widget build(BuildContext context) {
     return UserAvatar(user: currentUser);

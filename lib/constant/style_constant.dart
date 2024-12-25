@@ -1,4 +1,3 @@
-import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 const double sCardElevation = 3;

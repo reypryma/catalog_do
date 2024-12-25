@@ -1,6 +1,8 @@
-import 'package:catalog_do/constant/constant.dart';
+import 'package:catalog_do/constant/variable_constant.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:flutter/material.dart';
+
+import '../../data/images.dart';
 
 class AppBackground extends StatelessWidget {
   const AppBackground({super.key, required this.body});
@@ -30,7 +32,7 @@ class AppBackground extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Theme.of(context).appBarTheme.backgroundColor,
                   image: DecorationImage(
-                    image: AssetImage("assets/images/menu-bg.png"),
+                    image: AssetImage(Images.bg),
                     fit: BoxFit.none,
                     repeat: ImageRepeat.repeat,
                   ),

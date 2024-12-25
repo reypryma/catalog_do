@@ -1,5 +1,5 @@
-import 'package:catalog_do/constant/constant.dart';
-import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/constant/variable_constant.dart';
+import 'package:catalog_do/constant/style_constant.dart';
 import 'package:catalog_do/data/model/category.dart';
 import 'package:catalog_do/data/repository.dart';
 import 'package:catalog_do/layout/responsive.dart';
@@ -22,9 +22,7 @@ class _ProductDashboardState extends State<ProductDashboard> {
   List<String> banners = [];
   List<ShProduct> featuredProducts = [];
   var position = 0;
-  var colors = [sh_cat_1, sh_cat_2, sh_cat_3, sh_cat_4, sh_cat_5];
   bool _isLoading = true;
-
   @override
   void initState() {
     super.initState();
@@ -69,9 +67,6 @@ class _ProductDashboardState extends State<ProductDashboard> {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    var height = MediaQuery.of(context).size.height;
-
     return _isLoading
         ? LoaderWidget(color: Theme.of(context).colorScheme.primary)
         : _listProductWidget();
@@ -86,7 +81,7 @@ class _ProductDashboardState extends State<ProductDashboard> {
                 columns: responsiveColumns(
                     context,
                     Responsive().deviceType(),
-                    deviceWidth!, "blogs"),
+                    deviceWidth!, "catalogs"),
                 limit: 6,
                 spacing: 10.0,
               )

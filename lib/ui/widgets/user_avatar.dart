@@ -1,4 +1,4 @@
-import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/constant/style_constant.dart';
 import 'package:catalog_do/data/model/user.dart';
 import 'package:flutter/material.dart';
 
@@ -8,10 +8,6 @@ class UserAvatar extends StatelessWidget {
   final double? size;
   final double? radius;
   final BoxShadow? shadow;
-  // final Function? onTap;
-  // final String? image;
-  // final String? title;
-
   const UserAvatar({super.key,
     required this.user,
     this.onTapGoToProfile = true,
@@ -19,7 +15,6 @@ class UserAvatar extends StatelessWidget {
     this.radius,
     this.shadow,
   });
-
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);

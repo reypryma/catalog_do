@@ -1,10 +1,10 @@
-import 'package:catalog_do/constant/constant.dart';
 import 'package:catalog_do/data/menu_data.dart';
 import 'package:catalog_do/data/model/nav_menu_item.dart';
 import 'package:catalog_do/layout/responsive.dart';
 import 'package:catalog_do/services/util.dart';
 import 'package:flutter/material.dart';
 
+import '../../constant/variable_constant.dart';
 import 'nav_menu_item_list.dart';
 
 class NavigationMenu extends StatefulWidget {

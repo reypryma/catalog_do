@@ -3,7 +3,7 @@ import 'package:catalog_do/theme/app_theme.dart';
 import 'package:catalog_do/ui/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'constant/constant.dart';
+import 'constant/variable_constant.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,12 +19,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _appTheme = AppTheme();
+
   @override
   void initState() {
     super.initState();
     _appTheme.initTheme(context);
     _appTheme.addListener(() => setState(() {}));
   }
+
   @override
   Widget build(BuildContext context) {
     deviceWidth = MediaQuery.of(context).size.width;

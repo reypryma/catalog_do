@@ -7,8 +7,8 @@ import 'package:catalog_do/ui/screen/products/components/search_products.dart';
 import 'package:catalog_do/ui/widgets/loader_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constant/constant.dart';
-import '../../../constant/style.dart';
+import '../../../constant/variable_constant.dart';
+import '../../../constant/style_constant.dart';
 import '../../../layout/responsive.dart';
 import '../../widgets/search_catalog.dart';
 
@@ -59,7 +59,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
         title: title,
-        backbutton: "hide",
+        backButton: "hide",
         invisibleAppBar: hideScaffoldAppBar,
         body: AppContentView(
           title: title,
