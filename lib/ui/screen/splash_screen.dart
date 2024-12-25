@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Duration(seconds: 2),
           () {
         finish(context);
-        Navigator.of(context).pushNamed(PageRoutes.dashboard);
+        Navigator.of(context).pushNamed(PageRoutes.auth);
       },
     );
   }

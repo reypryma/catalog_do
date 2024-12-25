@@ -247,7 +247,7 @@ RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
 BoxConstraints sLandScapeForm = BoxConstraints(maxWidth: 600);
 
 int responsiveColumns(BuildContext context, String deviceType, double deviceWidth, [String? type]) {
-  if (type == "blogs") {
+  if (type == "catalogs") {
     if (deviceType == "desktop") {
       return 3;
     } else if (deviceType == "tablet") {
@@ -321,7 +321,7 @@ const IconData iconTermsConditions = Icons.policy_outlined;
 const IconData iconPrivacyPolicy = Icons.verified_user_outlined;
 const IconData iconSignOut = Icons.logout_outlined;
 const IconData iconSettingsSelect = Icons.check_circle_outlined;
-const IconData iconBlogs = Icons.book_outlined;
-const IconData iconBlogCategories = Icons.local_activity_outlined;
+const IconData iconCatalog = Icons.book_outlined;
+const IconData iconSetting = Icons.settings_applications;
 const IconData iconImage = Icons.image_outlined;
 const IconData iconAdd = Icons.add;

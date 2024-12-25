@@ -33,7 +33,7 @@ double appBarElevation = 1; // Default 4.
 bool linkTopBarWithMode = false;
 bool linkMenuWithMode = true;
 
-List<String> pageHeaderIcons = ["avatar", "settings"];
+List<String> pageHeaderIcons = ["settings"];
 
 const bool enableFormValidation = true;
 
