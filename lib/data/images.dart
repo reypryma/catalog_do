@@ -25,6 +25,6 @@ class Images {
     return images[Random().nextInt(images.length)];
   }
 
-  static const appleLogo = 'assets/images/logo/apple_logo.png';
-  static const googleLogo = 'assets/images/logo/google_logo.png';
+  static String appleLogo = 'assets/images/logo/apple_logo.png';
+  static String googleLogo = 'assets/images/logo/google_logo.png';
 }

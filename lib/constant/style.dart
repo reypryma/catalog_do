@@ -247,7 +247,7 @@ RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
 BoxConstraints sLandScapeForm = BoxConstraints(maxWidth: 600);
 
 int responsiveColumns(BuildContext context, String deviceType, double deviceWidth, [String? type]) {
-  if (type == "blogs") {
+  if (type == "catalogs") {
     if (deviceType == "desktop") {
       return 3;
     } else if (deviceType == "tablet") {
