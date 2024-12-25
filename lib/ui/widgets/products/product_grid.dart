@@ -11,12 +11,10 @@ class ProductGrid extends StatelessWidget {
     this.spacing,
     this.limit,
   });
-
   final List<ShProduct> data;
   final int columns;
   final double? spacing;
   final int? limit;
-
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [];
@@ -24,8 +22,6 @@ class ProductGrid extends StatelessWidget {
     bool allow = true;
 
     for (var element in data) {
-      debugPrint("Image locate : ${element.images![0].src}");
-
       if (allow) {
         items.add(MouseRegion(
           cursor: SystemMouseCursors.click,
@@ -46,19 +42,6 @@ class ProductGrid extends StatelessWidget {
         allow = false;
       }
     }
-
-    // return StaggeredGrid.count(
-    //   crossAxisCount: columns,
-    //   mainAxisSpacing: spacing ?? sGridItemSpacing,
-    //   crossAxisSpacing: spacing ?? sGridItemSpacing,
-    //   children: List.generate(
-    //     items.length,
-    //         (index) => StaggeredGridTile.fit(
-    //       crossAxisCellCount: 1,
-    //       child: items[index],
-    //     ),
-    //   ),
-    // );
 
     return GridView.builder(
       shrinkWrap: true,

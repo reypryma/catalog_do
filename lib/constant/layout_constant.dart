@@ -9,19 +9,6 @@ double tabletBreakpointGlobal = 600.0;
 double desktopBreakpointGlobal = 720.0;
 enum DeviceSize { mobile, tablet, desktop }
 
-extension LayoutUtils on BoxConstraints {
-  /// returns DeviceSize
-  DeviceSize get device {
-    if (maxWidth >= desktopBreakpointGlobal) {
-      return DeviceSize.desktop;
-    }
-    if (maxWidth >= tabletBreakpointGlobal) {
-      return DeviceSize.tablet;
-    }
-    return DeviceSize.mobile;
-  }
-}
-
 /// return true if running on Web
 bool get isWeb => kIsWeb;
 
@@ -40,9 +27,6 @@ bool get isGoogle => !isWeb && (Platform.isAndroid || Platform.isFuchsia);
 
 /// return true if running on Android
 bool get isAndroid => !isWeb && Platform.isAndroid;
-
-@Deprecated('Use isIOS instead')
-bool get isIos => !isWeb && Platform.isIOS;
 
 /// return true if running on iOS
 bool get isIOS => !isWeb && Platform.isIOS;

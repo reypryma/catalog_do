@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:intl/intl.dart';
 import 'package:flutter/services.dart';
 
 import 'model/address.dart';
@@ -52,10 +51,10 @@ Future<List<String>> loadBanners() async {
   List<ShProduct> products = await loadProducts();
   List<String> banner = [];
 
-  products.forEach((product) {
+  for (var product in products) {
     if (product.images!.isNotEmpty) {
-      banner.add("${product.images![0].src!}");
+      banner.add(product.images![0].src!);
     }
-  });
+  }
   return banner;
 }

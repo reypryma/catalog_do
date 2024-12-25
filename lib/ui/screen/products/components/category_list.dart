@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:horizontal_scroll_view/horizontal_scroll_view.dart';
 
-import '../../../../constant/app_text.dart';
+import '../../../../layout/app_text.dart';
 import '../../../../theme/app_theme.dart';
 
 class CategoryListView extends StatelessWidget {

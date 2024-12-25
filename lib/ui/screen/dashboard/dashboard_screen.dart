@@ -1,12 +1,12 @@
+import 'dart:math';
+
 import 'package:catalog_do/data/images.dart';
 import 'package:catalog_do/layout/app_layout.dart';
-import 'package:catalog_do/layout/responsive.dart';
 import 'package:catalog_do/ui/screen/dashboard/components/product_dashboard.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constant/app_text.dart';
-import '../../../constant/constant.dart';
-import '../../../constant/style.dart';
+import '../../../layout/app_text.dart';
+import '../../../constant/variable_constant.dart';
 import '../../../theme/app_theme.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -35,7 +35,7 @@ class DashboardScreen extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
         title: blogTitle,
-        backbutton: "hide",
+        backButton: "hide",
         menu: "show",
         invisibleAppBar: hideScaffoldAppBar,
         body: AppContentView(
@@ -79,6 +79,10 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _banner(BuildContext context, ThemeData theme) {
+    final random = Random();
+    final dummyImages = Images.dummy;
+    final randomIndex = random.nextInt(dummyImages.length);
+
     return Stack(
         alignment: Alignment.center,
         children: [
@@ -89,7 +93,7 @@ class DashboardScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
             clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Image.asset(Images.dummy[2], fit: BoxFit.cover),
+            child: Image.asset(Images.dummy[randomIndex], fit: BoxFit.cover),
           ),
           Container(
             height: 400,

@@ -16,7 +16,7 @@ extension StringExtension on String? {
 
   String formatDate() {
     if (this == null || this!.isEmpty || this == "null") {
-      return "NA";
+      return "N/A";
     } else {
       return DateFormat("dd MMM yyyy", "en_US").format(DateFormat("yyyy-MM-dd", "en_US").parse(this!));
     }

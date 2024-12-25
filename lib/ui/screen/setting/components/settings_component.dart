@@ -1,4 +1,4 @@
-import 'package:catalog_do/constant/app_text.dart';
+import 'package:catalog_do/layout/app_text.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +45,7 @@ class _SettingsComponentState extends State<SettingsComponent> {
                 Container(
                   width: 50,
                   height: 50,
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: skipbutton),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                   child: Icon(widget.icon, color: widget.color),
                 ),
                 SizedBox(width: 16),
@@ -68,10 +68,3 @@ class _SettingsComponentState extends State<SettingsComponent> {
       );
     }
 }
-
-
-const scribblrPrimaryColor = Color(0xFFA4634D);
-const secondaryColor = Color(0xFF834F3E);
-const indicatorColor = Color(0xFFA97360);
-const skipbutton = Color(0xFFF6F0EF);
-const resendColor = Color(0xff686c73);

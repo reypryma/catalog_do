@@ -13,10 +13,10 @@ bool hideScaffoldAppBar = false;
 String appVersion = '1.0.0';
 String appContactEmail = 'email@example.com';
 
-String defaultThemeName = 'Orange';
-String defaultMode = 'light';
-String defaultTopBar = 'primary';
-String defaultMenu = 'light';
+// String defaultThemeName = 'Orange';
+// String defaultMode = 'light';
+// String defaultTopBar = 'primary';
+// String defaultMenu = 'light';
 
 Map<int, Map<String, dynamic>> bgSkins = {};
 int defaultBGSkin = 0;

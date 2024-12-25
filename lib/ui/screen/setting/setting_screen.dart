@@ -2,8 +2,8 @@ import 'package:catalog_do/layout/app_layout.dart';
 import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constant/constant.dart';
-import '../../../constant/style.dart';
+import '../../../constant/variable_constant.dart';
+import '../../../constant/style_constant.dart';
 import '../../../layout/responsive.dart';
 import 'components/settings_component.dart';
 
@@ -22,7 +22,7 @@ class _SettingScreenState extends State<SettingScreen> {
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
         title: title,
-        backbutton: "hide",
+        backButton: "hide",
         invisibleAppBar: hideScaffoldAppBar,
         body: AppContentView(
           title: title,

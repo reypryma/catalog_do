@@ -1,4 +1,3 @@
-import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 const double sCardElevation = 3;
@@ -25,59 +24,6 @@ TextStyle sBodyText1White(BuildContext context) => Theme.of(context).textTheme.b
 
 TextStyle sBodyText2White(BuildContext context) => Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white.withOpacity(0.8));
 
-TextStyle sTextLink(BuildContext context) => Theme.of(context).textTheme.bodyLarge!;
-
-TextStyle sText(BuildContext context) => Theme.of(context).textTheme.bodyLarge!;
-TextStyle sText2(BuildContext context) => Theme.of(context).textTheme.bodyMedium!;
-TextStyle sHeading2(BuildContext context) => Theme.of(context).textTheme.headlineLarge!;
-TextStyle sHeading3(BuildContext context) => Theme.of(context).textTheme.headlineMedium!;
-TextStyle sHeading4(BuildContext context) => Theme.of(context).textTheme.headlineMedium!;
-TextStyle sHeading5(BuildContext context) => Theme.of(context).textTheme.headlineSmall!;
-TextStyle sHeading6(BuildContext context) => Theme.of(context).textTheme.headlineSmall!;
-
-Color sTextOnPrimaryColor(BuildContext context) {
-  Color color;
-  if (Theme.of(context).brightness == Brightness.light) {
-    color = Colors.blueGrey[800]!;
-  } else {
-    color = Colors.white;
-  }
-  return color;
-}
-
-Color sTextOnBrightness(BuildContext context, Brightness brightness) {
-  Color color;
-  if (brightness == Brightness.light) {
-    color = Colors.blueGrey[800]!;
-  } else {
-    color = Colors.white;
-  }
-  return color;
-}
-
-TextStyle sTitleOverImage(BuildContext context) => Theme.of(context).textTheme.headlineSmall!.copyWith(
-  color: Colors.white.withOpacity(0.9),
-  backgroundColor: Colors.blueGrey[800]!.withOpacity(0.7),
-);
-
-Color sDarkColor = Colors.blueGrey[800]!;
-
-
-/*------------------ Menu Color ------------------*/
-
-Color sMenuLight = Colors.white;
-Color sMenuLightText = Colors.blueGrey[700]!;
-
-Color sMenuDark = Colors.blueGrey[800]!;
-Color sMenuDarkText = Colors.blueGrey[100]!;
-
-const sh_cat_1 = Color(0xFFFA4352);
-const sh_cat_2 = Color(0xFF34B5C8);
-const sh_cat_3 = Color(0xFFFED76D);
-const sh_cat_4 = Color(0xFF0C5A93);
-const sh_cat_5 = Color(0xFF3CA69B);
-const sh_textColorPrimary = Color(0xFF212121);
-
 /*------------------ Navigation Menu Styles ------------------*/
 
 // Navigation Menu Header colors
@@ -93,21 +39,6 @@ bool sSettingsMenuCloseButton = false;
 // Navigation Menu Item Text Color
 
 Color sNavMenuItemColor(BuildContext context) {
-  // Color color;
-  // Color canvasColor = Theme.of(context).canvasColor;
-  //
-  // if (canvasColor == Theme.of(context).primaryColor) {
-  //   if (Theme.of(context).brightness == Brightness.light) {
-  //     color = Colors.blueGrey[800]!;
-  //   } else {
-  //     color = Colors.grey[200]!;
-  //   }
-  // } else if (canvasColor == sMenuLight) {
-  //   color = Colors.blueGrey[800]!;
-  // } else {
-  //   color = Colors.blueGrey[100]!;
-  // }
-  // return color;
   return Theme.of(context).colorScheme.tertiary;
 }
 
@@ -123,25 +54,6 @@ Color sNavMenuArrow(BuildContext context) {
 
   return color.withOpacity(0.7);
 }
-
-// Navigation Menu Item Icon Color
-// Color sNavMenuItemIconColor(BuildContext context) {
-//   Color color;
-//   Color canvasColor = Theme.of(context).canvasColor;
-//
-//   if (canvasColor == Theme.of(context).primaryColor) {
-//     if (Theme.of(context).brightness == Brightness.light) {
-//       color = Colors.blueGrey[800]!;
-//     } else {
-//       color = Colors.grey[200]!;
-//     }
-//   } else if (Theme.of(context).brightness == Brightness.light) {
-//     color = Colors.blueGrey[800]!;
-//   } else {
-//     color = Colors.white;
-//   }
-//   return color;
-// }
 
 // Navigation Menu Item Icon Decoration
 BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
@@ -165,47 +77,6 @@ TextStyle sNavMenuSectionName(BuildContext context) {
 const double sNavMenuItemIconSize = 18;
 
 Color sNavMenuItemHoverColor(BuildContext context) => Colors.black.withOpacity(.15);
-Color sSettingsMenuCardColor(BuildContext context, String type) {
-  Color txtcolor;
-  Color bgcolor;
-
-  Color canvasColor = Theme.of(context).canvasColor;
-
-  if (canvasColor == Theme.of(context).primaryColor) {
-    if (Theme.of(context).brightness != Brightness.light) {
-      txtcolor = Colors.blueGrey[100]!;
-      bgcolor = Colors.blueGrey[700]!;
-    } else {
-      txtcolor = Colors.grey[700]!;
-      bgcolor = Colors.grey[100]!;
-    }
-  } else if (canvasColor == sMenuLight) {
-    txtcolor = Colors.blueGrey[700]!;
-    bgcolor = Colors.blueGrey[100]!;
-  } else {
-    txtcolor = Colors.blueGrey[100]!;
-    bgcolor = Colors.blueGrey[700]!;
-  }
-  if (type == "bg") {
-    return bgcolor;
-  } else {
-    return txtcolor;
-  }
-}
-
-TextStyle sSettingsMenuCardText(BuildContext context, [Color? color]) {
-  return Theme.of(context).textTheme.labelSmall!.copyWith(
-    color: ((color != null) ? color : sSettingsMenuCardColor(context, "text")),
-    // color: ((color != null) ? color : ((Theme.of(context).brightness == Brightness.light) ? Colors.blueGrey[800] : Colors.blueGrey[200])),
-  );
-}
-
-TextStyle sSettingsMenuCardSmallText(BuildContext context, [Color? color]) => Theme.of(context).textTheme.labelSmall!.copyWith(
-  fontSize: 10,
-  fontStyle: FontStyle.italic,
-  color: ((color != null) ? color : sSettingsMenuCardColor(context, "text")),
-  // color: ((color != null) ? color : ((Theme.of(context).brightness == Brightness.light) ? Colors.blueGrey[800] : Colors.blueGrey[200])),
-);
 
 /*------------------ Avatar and List Text Styles ------------------*/
 
@@ -221,31 +92,8 @@ BoxShadow sAvatarShadow = BoxShadow(
   offset: Offset(1, 1),
 );
 
-/*------------------ Gradient ------------------*/
-
-LinearGradient sBGLinearGradient(BuildContext context, List<Color> colors) {
-  return LinearGradient(
-    colors: colors,
-    begin: const FractionalOffset(0.0, 1.0),
-    end: const FractionalOffset(0.0, 0.0),
-    stops: [0.0, 1.0],
-  );
-}
-
-RadialGradient sBGRadialGradient(BuildContext context, List<Color> colors) {
-  return RadialGradient(
-    center: Alignment(0.0, 0.0), // near the top right
-    radius: 0.7,
-    colors: colors,
-    stops: [0.1, 0.9],
-  );
-}
 
 /*------------------ Responsive ------------------*/
-// BoxConstraints sLandScapeContainer = BoxConstraints(maxWidth: 1200);
-// BoxConstraints sPortraitContainer = BoxConstraints(maxWidth: 400);
-BoxConstraints sLandScapeForm = BoxConstraints(maxWidth: 600);
-
 int responsiveColumns(BuildContext context, String deviceType, double deviceWidth, [String? type]) {
   if (type == "catalogs") {
     if (deviceType == "desktop") {

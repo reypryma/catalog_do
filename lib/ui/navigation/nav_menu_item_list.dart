@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'nav_menu_header.dart';
 import 'nav_menu_item.dart';
-import 'nav_menu_item_widget.dart';
 
 class NavigationMenuListItem extends StatelessWidget {
   const NavigationMenuListItem({
@@ -18,11 +17,8 @@ class NavigationMenuListItem extends StatelessWidget {
     debugPrint("Navigation menu list item ${item.type}");
     if (item.type == "header") {
       return NavigationMenuHeader();
-    } else if (item.type == "menu" || item.type == "menu_switch" ||
-        item.type == "dialog" || item.type == "menu_utils") {
+    } else if (item.type == "menu" || item.type == "dialog") {
       return NavigationMenuItem(item: item);
-    } else if (item.type == "menu_widget") {
-      return NavigationMenuItemWidget(item: item);
     } else if (item.type == "section" || item.type == "spacer") {
       return NavigationMenuItemSection(item: item);
     } else {

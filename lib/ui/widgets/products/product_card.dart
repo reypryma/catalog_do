@@ -1,5 +1,5 @@
-import 'package:catalog_do/constant/app_text.dart';
-import 'package:catalog_do/constant/style.dart';
+import 'package:catalog_do/layout/app_text.dart';
+import 'package:catalog_do/constant/style_constant.dart';
 import 'package:catalog_do/data/model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +11,7 @@ class ProductCard extends StatelessWidget {
   });
 
   final ShProduct blog;
+
   // final bool showUsers;
 
   @override
@@ -29,7 +30,11 @@ class ProductCard extends StatelessWidget {
       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
-        child: ProductItem(product: blog, textMaxLines: 3, imageHeight: 210,),
+        child: ProductItem(
+          product: blog,
+          textMaxLines: 3,
+          imageHeight: 210,
+        ),
       ),
     );
     // });
@@ -60,7 +65,8 @@ class ProductItem extends StatelessWidget {
     var width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5), // sBlogItemInnerPadding,
+      padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
+      // sBlogItemInnerPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -77,39 +83,26 @@ class ProductItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // ClipRRect(
-                //   borderRadius: sImageBorderRadius,
-                //   child: Image(
-                //     height: imageHeight,
-                //     fit: BoxFit.fill,
-                //     image: AssetImage("images/products${blog.images![0].src!}" ?? ""),
-                //   )),
-                // Container(
-                //   padding: EdgeInsets.all(1),
-                //   decoration: BoxDecoration(border: Border.all(color: Colors.amber, width: 1)),
-                //   child: Image.asset("images/shophop/img/products" + blog.images![0].src!, fit: BoxFit.cover, height: width * 0.35, width: width * 0.29),
-                // ),
                 Container(
+                  constraints: BoxConstraints(maxHeight: 300),
                   padding: EdgeInsets.all(1),
-                  decoration: BoxDecoration(border: Border.all(color: Colors.amber, width: 1)),
-                  child: Image.asset(product.images![0].src!, fit: BoxFit.cover, height: width * 0.35, width: width * 0.29),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.amber, width: 1)),
+                  child: Image.asset(product.images![0].src!,
+                      fit: BoxFit.cover,
+                      height: width * 0.35,
+                      width: width * 0.29),
                 ),
                 SizedBox(height: 10),
                 Text(
                   (product.description ?? ""),
                   style: theme.textTheme.bodyMedium,
                   maxLines: textMaxLines,
-                  overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
+                  overflow:
+                      ((textMaxLines != null) ? TextOverflow.ellipsis : null),
                   // style: sText,
                 ),
                 SizedBox(height: 10),
-                // Text(
-                //   (blog.regular_price ?? ""),
-                //   style: theme.textTheme.bodyMedium,
-                //   maxLines: textMaxLines,
-                //   overflow: ((textMaxLines != null) ? TextOverflow.ellipsis : null),
-                //   // style: sText,
-                // ),
                 AppText.bodyLarge(
                   "\$${product.regular_price}.00",
                   fontWeight: 600,
@@ -122,4 +115,3 @@ class ProductItem extends StatelessWidget {
     );
   }
 }
-

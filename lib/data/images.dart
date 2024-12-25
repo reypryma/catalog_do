@@ -3,11 +3,8 @@ import 'dart:math';
 class Images {
   ///  Logo ///
   static String hey = 'assets/icon/hey.png';
+  static String bg = 'assets/images/menu-bg.png';
 
-  /// Background ///
-  static String background = 'assets/images/dummy/dummy_1.jpg';
-
-  static String counter = 'assets/dummy/counter.png';
   static String currentUser = 'assets/images/user-1.jpg';
 
   /// Avatars ///

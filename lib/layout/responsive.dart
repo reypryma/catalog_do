@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constant/constant.dart';
+import '../constant/variable_constant.dart';
 
 class Responsive {
   late String device;
