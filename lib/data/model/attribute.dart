@@ -23,32 +23,31 @@ class ShColor {
   String? description;
   int? id;
 
-  // ignore: non_constant_identifier_names
-  int? menu_order;
+  
+  int? menuOrder;
   String? name;
   String? slug;
   bool isSelected = false;
 
-  // ignore: non_constant_identifier_names
-  ShColor({this.count, this.description, this.id, this.menu_order, this.name, this.slug});
+  ShColor({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
 
   factory ShColor.fromJson(Map<String, dynamic> json) {
     return ShColor(
       count: json['count'],
       description: json['description'],
       id: json['id'],
-      menu_order: json['menu_order'],
+      menuOrder: json['menu_order'],
       name: json['name'],
       slug: json['slug'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['count'] = count;
     data['description'] = description;
     data['id'] = id;
-    data['menu_order'] = menu_order;
+    data['menu_order'] = menuOrder;
     data['name'] = name;
     data['slug'] = slug;
     return data;
@@ -60,32 +59,32 @@ class ShSize {
   String? description;
   int? id;
 
-  // ignore: non_constant_identifier_names
-  int? menu_order;
+  
+  int? menuOrder;
   String? name;
   String? slug;
   bool isSelected = false;
 
-  // ignore: non_constant_identifier_names
-  ShSize({this.count, this.description, this.id, this.menu_order, this.name, this.slug});
+  
+  ShSize({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
 
   factory ShSize.fromJson(Map<String, dynamic> json) {
     return ShSize(
       count: json['count'],
       description: json['description'],
       id: json['id'],
-      menu_order: json['menu_order'],
+      menuOrder: json['menu_order'],
       name: json['name'],
       slug: json['slug'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['count'] = count;
     data['description'] = description;
     data['id'] = id;
-    data['menu_order'] = menu_order;
+    data['menu_order'] = menuOrder;
     data['name'] = name;
     data['slug'] = slug;
     return data;
@@ -107,7 +106,7 @@ class Brand {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['slug'] = slug;
     return data;

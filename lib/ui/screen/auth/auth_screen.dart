@@ -69,7 +69,8 @@ class _AuthScreenState extends State<AuthScreen> {
             SizedBox(height: 12,),
             AppText.bodySmall("Welcome back! Please join with this Socials.", fontWeight: 600),
             SizedBox(height: 12,),
-            isMobileScreen ? _loginMobile() : _loginDesktop()
+            isMobileScreen ? _loginMobile() : _loginDesktop(),
+            SizedBox(height: 12,),
           ],
         ),
       ),

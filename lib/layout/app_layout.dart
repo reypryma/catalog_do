@@ -149,7 +149,6 @@ class AppContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("responsive ${Responsive().deviceType()} status $showMenu");
     // Desktop View
     if (Responsive().deviceType() == "desktop" && showMenu == true) {
       return Row(

@@ -21,8 +21,8 @@ class SearchProductsScreen extends StatefulWidget {
 
 class _SearchProductsScreenState extends State<SearchProductsScreen> {
   final AppTheme _appTheme = AppTheme();
-  List<ShProduct> products = [];
-  List<ShProduct> filteredList = [];
+  List<Product> products = [];
+  List<Product> filteredList = [];
   bool _isLoading = true;
 
   final TextEditingController _searchController = TextEditingController();
@@ -179,7 +179,6 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
   }
 
   Widget _showSearchedProduct() {
-    debugPrint("filter ${filteredList.length}");
     return Container(
       constraints: Responsive().contentAreaWidth(),
       padding: EdgeInsets.all(8),

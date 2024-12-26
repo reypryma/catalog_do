@@ -27,14 +27,9 @@ class DashboardScreen extends StatelessWidget {
       fab = true;
     }
 
-    String blogTitle = title;
-    if (listTitle != null) {
-      blogTitle = listTitle!;
-    }
-
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
-        title: blogTitle,
+        title: title,
         backButton: "hide",
         menu: "show",
         invisibleAppBar: hideScaffoldAppBar,
@@ -51,9 +46,7 @@ class DashboardScreen extends StatelessWidget {
         ),
         showFAB: fab ? true : false,
         onPressFAB: () {
-          if (fab == true) {
-            // Navigator.of(context).pushNamed(pageFAB!);
-          }
+
         },
         iconFAB: Icons.add,
       );

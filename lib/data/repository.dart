@@ -17,16 +17,16 @@ Future<List<ShCategory>> loadCategory() async {
   return (jsonResponse as List).map((i) => ShCategory.fromJson(i)).toList();
 }
 
-Future<List<ShProduct>> loadProducts() async {
+Future<List<Product>> loadProducts() async {
   String jsonString = await loadContentAsset('assets/data/products.json');
   final jsonResponse = json.decode(jsonString);
-  return (jsonResponse as List).map((i) => ShProduct.fromJson(i)).toList();
+  return (jsonResponse as List).map((i) => Product.fromJson(i)).toList();
 }
 
-Future<List<ShProduct>> loadCartProducts() async {
+Future<List<Product>> loadCartProducts() async {
   String jsonString = await loadContentAsset('assets/data/cart_products.json');
   final jsonResponse = json.decode(jsonString);
-  return (jsonResponse as List).map((i) => ShProduct.fromJson(i)).toList();
+  return (jsonResponse as List).map((i) => Product.fromJson(i)).toList();
 }
 
 Future<ShAttributes> loadAttributes() async {
@@ -48,7 +48,7 @@ Future<List<ShOrder>> loadOrders() async {
 }
 
 Future<List<String>> loadBanners() async {
-  List<ShProduct> products = await loadProducts();
+  List<Product> products = await loadProducts();
   List<String> banner = [];
 
   for (var product in products) {

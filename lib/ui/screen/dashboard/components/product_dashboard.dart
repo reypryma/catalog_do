@@ -19,8 +19,7 @@ class ProductDashboard extends StatefulWidget {
 
 class _ProductDashboardState extends State<ProductDashboard> {
   List<ShCategory> list = [];
-  List<String> banners = [];
-  List<ShProduct> featuredProducts = [];
+  List<Product> featuredProducts = [];
   var position = 0;
   bool _isLoading = true;
   @override
@@ -37,24 +36,19 @@ class _ProductDashboardState extends State<ProductDashboard> {
       });
     }).catchError((error) {
       if (kDebugMode) {
-        print(error);
+        debugPrint(error);
       }
+      if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to load data')));
     });
-    List<ShProduct> products = await loadProducts();
-    List<ShProduct> featured = [];
+    List<Product> products = await loadProducts();
+    List<Product> featured = [];
     for (var product in products) {
       if (product.featured!) {
         featured.add(product);
       }
     }
-    List<String> banner = [];
-    for (var i = 1; i < 7; i++) {
-      banner.add("images/products/banners/b$i.jpg");
-    }
     setState(() {
       featuredProducts.clear();
-      banners.clear();
-      banners.addAll(banner);
       featuredProducts.addAll(featured);
       _isLoading = false;
     });
