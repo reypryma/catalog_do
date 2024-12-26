@@ -21,12 +21,12 @@ class SearchProductsScreen extends StatefulWidget {
 
 class _SearchProductsScreenState extends State<SearchProductsScreen> {
   final AppTheme _appTheme = AppTheme();
-  List<Product> products = [];
-  List<Product> filteredList = [];
+  List<Product> _products = [];
+  final List<Product> _filteredList = [];
   bool _isLoading = true;
 
   final TextEditingController _searchController = TextEditingController();
-  var searchText = "";
+  var _searchText = "";
 
   @override
   void initState() {
@@ -35,15 +35,15 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
   }
 
   Future fetchData() async {
-    debugPrint("Search: $searchText");
+    debugPrint("Search: $_searchText");
     _isLoading = true;
-    products.clear();
-    filteredList.clear();
-    products = await loadProducts();
+    _products.clear();
+    _filteredList.clear();
+    _products = await loadProducts();
 
-    for (var product in products) {
-      if (product.name!.toLowerCase().contains(searchText)) {
-        filteredList.add(product);
+    for (var product in _products) {
+      if (product.name!.toLowerCase().contains(_searchText)) {
+        _filteredList.add(product);
       }
     }
 
@@ -145,7 +145,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
                                           ),
                                           onPressed: () {
                                             _searchController.clear();
-                                            searchText = "";
+                                            _searchText = "";
                                             fetchData();
                                           },
                                         )
@@ -157,7 +157,7 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
                           ),
                           IconButton(
                             onPressed: () {
-                              searchText = _searchController.text;
+                              _searchText = _searchController.text;
                               fetchData();
                               setState(() {
 
@@ -195,10 +195,10 @@ class _SearchProductsScreenState extends State<SearchProductsScreen> {
             ? LoaderWidget(
                 color: _appTheme.getTheme().colorScheme.primary,
               )
-            : filteredList.isEmpty
+            : _filteredList.isEmpty
                 ? SearchNotFound(message: _searchController.text)
                 : SearchProducts(
-                    products: filteredList,
+                    products: _filteredList,
                   ),
       ),
     );

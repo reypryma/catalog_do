@@ -18,8 +18,8 @@ class ProductDashboard extends StatefulWidget {
 }
 
 class _ProductDashboardState extends State<ProductDashboard> {
-  List<ShCategory> list = [];
-  List<Product> featuredProducts = [];
+  final List<DcCategory> _listCategories = [];
+  final List<Product> _featuredProducts = [];
   var position = 0;
   bool _isLoading = true;
   @override
@@ -31,8 +31,8 @@ class _ProductDashboardState extends State<ProductDashboard> {
   fetchData() async {
     loadCategory().then((categories) {
       setState(() {
-        list.clear();
-        list.addAll(categories);
+        _listCategories.clear();
+        _listCategories.addAll(categories);
       });
     }).catchError((error) {
       if (kDebugMode) {
@@ -48,8 +48,8 @@ class _ProductDashboardState extends State<ProductDashboard> {
       }
     }
     setState(() {
-      featuredProducts.clear();
-      featuredProducts.addAll(featured);
+      _featuredProducts.clear();
+      _featuredProducts.addAll(featured);
       _isLoading = false;
     });
   }
@@ -67,11 +67,11 @@ class _ProductDashboardState extends State<ProductDashboard> {
   }
 
   Widget _listProductWidget() {
-    return featuredProducts.isNotEmpty
+    return _featuredProducts.isNotEmpty
         ? Column(
             children: [
               ProductGrid(
-                data: featuredProducts,
+                data: _featuredProducts,
                 columns: responsiveColumns(
                     context,
                     Responsive().deviceType(),

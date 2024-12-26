@@ -14,7 +14,6 @@ import 'components/category_list.dart';
 
 class DetailProductScreen extends StatefulWidget {
   final Product product;
-
   const DetailProductScreen({super.key, required this.product});
 
   @override
@@ -22,7 +21,6 @@ class DetailProductScreen extends StatefulWidget {
 }
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
-  var position = 0;
   final AppTheme _appTheme = AppTheme();
 
   @override
