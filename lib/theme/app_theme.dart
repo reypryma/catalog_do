@@ -32,11 +32,15 @@ class AppTheme extends ChangeNotifier {
     TextTheme textTheme =
         createTextTheme(context, "Roboto Serif", "Nanum Gothic Coding");
     _materialTheme = MaterialTheme(textTheme);
-    await _localDb.setTheme(_themeMode == ThemeMode.dark);
+    bool? themeStatus = await _localDb.isDarkMode();
+    if (themeStatus == null) {
+      await _localDb.setTheme(_themeMode == ThemeMode.dark);
+    }
   }
 
   Future<void> _getThemeMode() async {
     final isDarkMode = await _localDb.isDarkMode() ?? false;
+    _localDb.setTheme(isDarkMode);
 
     if (isDarkMode == true) {
       _themeMode = ThemeMode.dark;
@@ -98,7 +102,7 @@ class LocalDB {
     _prefs ??= await SharedPreferences.getInstance();
   }
 
-  Future isDarkMode() async {
+  Future<bool?> isDarkMode() async {
     await _init();
     return _prefs?.getBool('isDarkMode');
   }
