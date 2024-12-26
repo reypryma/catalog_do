@@ -1,4 +1,4 @@
-class ShOrder {
+class DcOrder {
   Item? item;
 
   String? orderDate;
@@ -7,10 +7,10 @@ class ShOrder {
 
   String? orderNumber;
 
-  ShOrder({this.item, this.orderDate, this.orderStatus, this.orderNumber});
+  DcOrder({this.item, this.orderDate, this.orderStatus, this.orderNumber});
 
-  factory ShOrder.fromJson(Map<String, dynamic> json) {
-    return ShOrder(
+  factory DcOrder.fromJson(Map<String, dynamic> json) {
+    return DcOrder(
       item: json['item'] != null ? Item.fromJson(json['item']) : null,
       orderDate: json['order_date'],
       orderStatus: json['order_status'],

@@ -1,24 +1,24 @@
 import 'category.dart';
 
-class ShAttributes {
+class DcAttributes {
   List<Brand>? brand;
-  List<ShSize>? size;
-  List<ShColor>? color;
-  List<ShCategory>? categories;
+  List<DcSize>? size;
+  List<DcColor>? color;
+  List<DcCategory>? categories;
 
-  ShAttributes({this.brand, this.size, this.color, this.categories});
+  DcAttributes({this.brand, this.size, this.color, this.categories});
 
-  factory ShAttributes.fromJson(Map<String, dynamic> json) {
-    return ShAttributes(
+  factory DcAttributes.fromJson(Map<String, dynamic> json) {
+    return DcAttributes(
       brand: json['brand'] != null ? (json['brand'] as List).map((i) => Brand.fromJson(i)).toList() : null,
-      size: json['size'] != null ? (json['size'] as List).map((i) => ShSize.fromJson(i)).toList() : null,
-      color: json['color'] != null ? (json['color'] as List).map((i) => ShColor.fromJson(i)).toList() : null,
-      categories: json['categories'] != null ? (json['categories'] as List).map((i) => ShCategory.fromJson(i)).toList() : null,
+      size: json['size'] != null ? (json['size'] as List).map((i) => DcSize.fromJson(i)).toList() : null,
+      color: json['color'] != null ? (json['color'] as List).map((i) => DcColor.fromJson(i)).toList() : null,
+      categories: json['categories'] != null ? (json['categories'] as List).map((i) => DcCategory.fromJson(i)).toList() : null,
     );
   }
 }
 
-class ShColor {
+class DcColor {
   int? count;
   String? description;
   int? id;
@@ -29,10 +29,10 @@ class ShColor {
   String? slug;
   bool isSelected = false;
 
-  ShColor({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
+  DcColor({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
 
-  factory ShColor.fromJson(Map<String, dynamic> json) {
-    return ShColor(
+  factory DcColor.fromJson(Map<String, dynamic> json) {
+    return DcColor(
       count: json['count'],
       description: json['description'],
       id: json['id'],
@@ -54,7 +54,7 @@ class ShColor {
   }
 }
 
-class ShSize {
+class DcSize {
   int? count;
   String? description;
   int? id;
@@ -66,10 +66,10 @@ class ShSize {
   bool isSelected = false;
 
   
-  ShSize({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
+  DcSize({this.count, this.description, this.id, this.menuOrder, this.name, this.slug});
 
-  factory ShSize.fromJson(Map<String, dynamic> json) {
-    return ShSize(
+  factory DcSize.fromJson(Map<String, dynamic> json) {
+    return DcSize(
       count: json['count'],
       description: json['description'],
       id: json['id'],

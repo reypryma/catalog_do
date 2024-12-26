@@ -1,4 +1,4 @@
-class ShAddressModel {
+class DcAddressModel {
   int? id;
 
   String? firstName;
@@ -13,10 +13,10 @@ class ShAddressModel {
   String? phoneNumber;
   String? country;
 
-  ShAddressModel({this.id, this.firstName, this.lastName, this.pinCode, this.city, this.state, this.addressType, this.address, this.phoneNumber, this.country});
+  DcAddressModel({this.id, this.firstName, this.lastName, this.pinCode, this.city, this.state, this.addressType, this.address, this.phoneNumber, this.country});
 
-  factory ShAddressModel.fromJson(Map<String, dynamic> json) {
-    return ShAddressModel(
+  factory DcAddressModel.fromJson(Map<String, dynamic> json) {
+    return DcAddressModel(
       id: json['id'],
       firstName: json['first_name'],
       lastName: json['last_name'],

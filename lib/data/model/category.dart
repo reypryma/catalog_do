@@ -1,4 +1,4 @@
-class ShCategory {
+class DcCategory {
   int? count;
   String? description;
   int? id;
@@ -11,10 +11,10 @@ class ShCategory {
   String? image;
 
   
-  ShCategory({this.count, this.description, this.id, this.isSelected, this.menuOrder, this.name, this.parent, this.slug, this.image});
+  DcCategory({this.count, this.description, this.id, this.isSelected, this.menuOrder, this.name, this.parent, this.slug, this.image});
 
-  factory ShCategory.fromJson(Map<String, dynamic> json) {
-    return ShCategory(
+  factory DcCategory.fromJson(Map<String, dynamic> json) {
+    return DcCategory(
         count: json['count'],
         description: json['description'],
         id: json['id'],

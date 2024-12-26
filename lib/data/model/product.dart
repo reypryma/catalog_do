@@ -106,9 +106,9 @@ class Product {
   int? parentId;
 
   String? purchaseNote;
-  List<ShCategory>? categories;
+  List<DcCategory>? categories;
   List<dynamic>? tags;
-  List<ShImage>? images;
+  List<DcImage>? images;
   List<Attribute>? attributes;
 
   List<dynamic>? defaultAttributes;
@@ -241,10 +241,10 @@ class Product {
       parentId: json['parent_id'],
       purchaseNote: json['purchase_note'],
       categories: json['categories'] != null ? (json['categories'] as List)
-          .map((i) => ShCategory.fromJson(i))
+          .map((i) => DcCategory.fromJson(i))
           .toList() : null,
       images: json['images'] != null ? (json['images'] as List).map((i) =>
-          ShImage.fromJson(i)).toList() : null,
+          DcImage.fromJson(i)).toList() : null,
       attributes: json['attributes'] != null ? (json['attributes'] as List)
           .map((i) => Attribute.fromJson(i))
           .toList() : null,
@@ -252,7 +252,7 @@ class Product {
   }
 }
 
-class ShImage {
+class DcImage {
   int? id;
 
   String? dateCreated;
@@ -266,11 +266,11 @@ class ShImage {
   String? name;
   String? alt;
 
-  ShImage(
+  DcImage(
       {this.id, this.dateCreated, this.dateCreatedGMT, this.dateModified, this.dateModifiedGMT, this.src, this.name, this.alt});
 
-  factory ShImage.fromJson(Map<String, dynamic> json) {
-    return ShImage(
+  factory DcImage.fromJson(Map<String, dynamic> json) {
+    return DcImage(
       id: json['id'],
       dateCreated: json['date_created'],
       dateCreatedGMT: json['date_created_gmt'],

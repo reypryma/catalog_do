@@ -1,4 +1,4 @@
-class ShReview {
+class DcReview {
   String? dateCreated;
 
   String? dateCreatedGMT;
@@ -10,10 +10,10 @@ class ShReview {
   String? review;
   bool? verified;
 
-  ShReview({this.dateCreated, this.dateCreatedGMT, this.email, this.id, this.name, this.productId, this.rating, this.review, this.verified});
+  DcReview({this.dateCreated, this.dateCreatedGMT, this.email, this.id, this.name, this.productId, this.rating, this.review, this.verified});
 
-  factory ShReview.fromJson(Map<String, dynamic> json) {
-    return ShReview(
+  factory DcReview.fromJson(Map<String, dynamic> json) {
+    return DcReview(
       dateCreated: json['date_created'],
       dateCreatedGMT: json['date_created_gmt'],
       email: json['email'],
