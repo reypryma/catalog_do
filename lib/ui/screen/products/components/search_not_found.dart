@@ -21,8 +21,8 @@ class SearchNotFound extends StatelessWidget {
         SizedBox(
           height: 5,
         ),
-        AppText.headlineMedium(
-          "Search with other keywords",
+        AppText.headlineSmall(
+          "Search with other keywords"
         ),
         SizedBox(
           height: 80,

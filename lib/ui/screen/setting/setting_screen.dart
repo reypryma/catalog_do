@@ -61,4 +61,9 @@ class _SettingScreenState extends State<SettingScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 }

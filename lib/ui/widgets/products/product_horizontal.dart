@@ -4,7 +4,7 @@ import 'package:catalog_do/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductHorizontal extends StatelessWidget {
-  final ShProduct product;
+  final Product product;
   final VoidCallback? ontap;
   const ProductHorizontal({super.key, required this.product, this.ontap});
 

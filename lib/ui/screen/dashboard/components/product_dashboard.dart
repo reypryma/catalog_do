@@ -18,9 +18,8 @@ class ProductDashboard extends StatefulWidget {
 }
 
 class _ProductDashboardState extends State<ProductDashboard> {
-  List<ShCategory> list = [];
-  List<String> banners = [];
-  List<ShProduct> featuredProducts = [];
+  final List<DcCategory> _listCategories = [];
+  final List<Product> _featuredProducts = [];
   var position = 0;
   bool _isLoading = true;
   @override
@@ -32,30 +31,25 @@ class _ProductDashboardState extends State<ProductDashboard> {
   fetchData() async {
     loadCategory().then((categories) {
       setState(() {
-        list.clear();
-        list.addAll(categories);
+        _listCategories.clear();
+        _listCategories.addAll(categories);
       });
     }).catchError((error) {
       if (kDebugMode) {
-        print(error);
+        debugPrint(error);
       }
+      if(mounted) ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Failed to load data')));
     });
-    List<ShProduct> products = await loadProducts();
-    List<ShProduct> featured = [];
+    List<Product> products = await loadProducts();
+    List<Product> featured = [];
     for (var product in products) {
       if (product.featured!) {
         featured.add(product);
       }
     }
-    List<String> banner = [];
-    for (var i = 1; i < 7; i++) {
-      banner.add("images/products/banners/b$i.jpg");
-    }
     setState(() {
-      featuredProducts.clear();
-      banners.clear();
-      banners.addAll(banner);
-      featuredProducts.addAll(featured);
+      _featuredProducts.clear();
+      _featuredProducts.addAll(featured);
       _isLoading = false;
     });
   }
@@ -73,11 +67,11 @@ class _ProductDashboardState extends State<ProductDashboard> {
   }
 
   Widget _listProductWidget() {
-    return featuredProducts.isNotEmpty
+    return _featuredProducts.isNotEmpty
         ? Column(
             children: [
               ProductGrid(
-                data: featuredProducts,
+                data: _featuredProducts,
                 columns: responsiveColumns(
                     context,
                     Responsive().deviceType(),

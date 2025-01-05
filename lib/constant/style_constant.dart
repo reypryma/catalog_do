@@ -11,7 +11,7 @@ EdgeInsets sAllSidesGap = EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 20.0);
 BorderRadius sFABBorderRadius = BorderRadius.circular(4.0);
 
 
-/*------------------ General App Typography ------------------*/
+/*------------------ General Typography ------------------*/
 
 TextStyle sHeading2White(BuildContext context) => Theme.of(context).textTheme.headlineLarge!.copyWith(color: Colors.white.withOpacity(0.9));
 TextStyle sHeading4White(BuildContext context) => Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white.withOpacity(0.9));
@@ -24,7 +24,7 @@ TextStyle sBodyText1White(BuildContext context) => Theme.of(context).textTheme.b
 
 TextStyle sBodyText2White(BuildContext context) => Theme.of(context).textTheme.bodyMedium!.copyWith(color: Colors.white.withOpacity(0.8));
 
-/*------------------ Navigation Menu Styles ------------------*/
+/*------------------ Set Navigation Menu Styles ------------------*/
 
 // Navigation Menu Header colors
 TextStyle sNavMenuTitle(BuildContext context) => sHeading6White(context);
@@ -55,7 +55,7 @@ Color sNavMenuArrow(BuildContext context) {
   return color.withOpacity(0.7);
 }
 
-// Navigation Menu Item Icon Decoration
+// Set Navigation Menu Item Icon Decoration
 BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
   Color primaryColor = Theme.of(context).colorScheme.surfaceContainerLowest;
 
@@ -65,7 +65,7 @@ BoxDecoration sNavMenuItemIconDecoration(BuildContext context) {
   );
 }
 
-// Navigation Menu Section Heading
+// Set Navigation Menu Section Heading
 TextStyle sNavMenuSectionName(BuildContext context) {
   return Theme.of(context).textTheme.bodyMedium!.copyWith(
     color: Theme.of(context).colorScheme.onTertiaryContainer,
@@ -78,7 +78,7 @@ const double sNavMenuItemIconSize = 18;
 
 Color sNavMenuItemHoverColor(BuildContext context) => Colors.black.withOpacity(.15);
 
-/*------------------ Avatar and List Text Styles ------------------*/
+/*------------------ Avatar ------------------*/
 
 TextStyle sListAvatarText(BuildContext context, [double size = 18.0]) {
   return Theme.of(context).textTheme.headlineSmall!;

@@ -1,26 +1,25 @@
-class ShCategory {
+class DcCategory {
   int? count;
   String? description;
   int? id;
   bool? isSelected;
 
-  // ignore: non_constant_identifier_names
-  int? menu_order;
+  int? menuOrder;
   String? name;
   int? parent;
   String? slug;
   String? image;
 
-  // ignore: non_constant_identifier_names
-  ShCategory({this.count, this.description, this.id, this.isSelected, this.menu_order, this.name, this.parent, this.slug, this.image});
+  
+  DcCategory({this.count, this.description, this.id, this.isSelected, this.menuOrder, this.name, this.parent, this.slug, this.image});
 
-  factory ShCategory.fromJson(Map<String, dynamic> json) {
-    return ShCategory(
+  factory DcCategory.fromJson(Map<String, dynamic> json) {
+    return DcCategory(
         count: json['count'],
         description: json['description'],
         id: json['id'],
         isSelected: json['isSelected'],
-        menu_order: json['menu_order'],
+        menuOrder: json['menu_order'],
         name: json['name'],
         parent: json['parent'],
         slug: json['slug'],
@@ -28,12 +27,12 @@ class ShCategory {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['count'] = count;
     data['description'] = description;
     data['id'] = id;
     data['isSelected'] = isSelected;
-    data['menu_order'] = menu_order;
+    data['menu_order'] = menuOrder;
     data['name'] = name;
     data['parent'] = parent;
     data['slug'] = slug;

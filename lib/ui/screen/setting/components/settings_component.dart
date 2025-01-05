@@ -57,7 +57,7 @@ class _SettingsComponentState extends State<SettingsComponent> {
                     activeColor: Colors.white,
                     value: _appTheme.usedDarkSkin(),
                     onChanged: (value) {
-                      _appTheme.toggleTheme(context);
+                      if (mounted) _appTheme.toggleTheme(context);
                     },
                   ),
               ],

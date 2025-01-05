@@ -6,32 +6,27 @@ import 'package:flutter/material.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({
     super.key,
-    required this.blog,
-    // this.showUsers = false,
+    required this.product,
   });
 
-  final ShProduct blog;
-
-  // final bool showUsers;
-
+  final Product product;
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
-    // List<Widget> usersList = [];
 
     return Card(
       elevation: sCardElevation,
       shape: RoundedRectangleBorder(
         borderRadius: sCardBorderRadius,
         side: BorderSide(
-          color: theme.colorScheme.inversePrimary, // Set the border color
+          color: theme.colorScheme.inversePrimary,
           width: 1, // Set the border width
         ),
       ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(10, 10, 10, 20),
         child: ProductItem(
-          product: blog,
+          product: product,
           textMaxLines: 3,
           imageHeight: 210,
         ),
@@ -52,7 +47,7 @@ class ProductItem extends StatelessWidget {
     this.textMaxLines,
   });
 
-  final ShProduct product;
+  final Product product;
   final BoxDecoration? boxDivider;
   final bool? showComments;
   final bool? showFullText;
@@ -66,7 +61,6 @@ class ProductItem extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
-      // sBlogItemInnerPadding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -104,7 +98,7 @@ class ProductItem extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 AppText.bodyLarge(
-                  "\$${product.regular_price}.00",
+                  "\$${product.regularPrice}.00",
                   fontWeight: 600,
                 ),
               ],

@@ -1,32 +1,28 @@
-class ShOrder {
+class DcOrder {
   Item? item;
 
-  // ignore: non_constant_identifier_names
-  String? order_date;
+  String? orderDate;
 
-  // ignore: non_constant_identifier_names
-  String? order_status;
+  String? orderStatus;
 
-  // ignore: non_constant_identifier_names
-  String? order_number;
+  String? orderNumber;
 
-  // ignore: non_constant_identifier_names
-  ShOrder({this.item, this.order_date, this.order_status, this.order_number});
+  DcOrder({this.item, this.orderDate, this.orderStatus, this.orderNumber});
 
-  factory ShOrder.fromJson(Map<String, dynamic> json) {
-    return ShOrder(
+  factory DcOrder.fromJson(Map<String, dynamic> json) {
+    return DcOrder(
       item: json['item'] != null ? Item.fromJson(json['item']) : null,
-      order_date: json['order_date'],
-      order_status: json['order_status'],
-      order_number: json['order_number'],
+      orderDate: json['order_date'],
+      orderStatus: json['order_status'],
+      orderNumber: json['order_number'],
     );
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['order_date'] = order_date;
-    data['order_status'] = order_status;
-    data['order_number'] = order_number;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['order_date'] = orderDate;
+    data['order_status'] = orderStatus;
+    data['order_number'] = orderNumber;
     if (item != null) {
       data['item'] = item!.toJson();
     }
@@ -52,7 +48,7 @@ class Item {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
     data['price'] = price;

@@ -13,8 +13,7 @@ import 'package:flutter/material.dart';
 import 'components/category_list.dart';
 
 class DetailProductScreen extends StatefulWidget {
-  final ShProduct product;
-
+  final Product product;
   const DetailProductScreen({super.key, required this.product});
 
   @override
@@ -22,20 +21,17 @@ class DetailProductScreen extends StatefulWidget {
 }
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
-  var position = 0;
   final AppTheme _appTheme = AppTheme();
 
   @override
   void initState() {
     super.initState();
-    debugPrint(widget.product.average_rating);
-    debugPrint("images count ${widget.product.images?.length}");
   }
 
   @override
   Widget build(BuildContext context) {
     String title = "Detail Product";
-    ShProduct product = widget.product;
+    Product product = widget.product;
 
     var colorList = [];
     for (var element in product.attributes!) {
@@ -63,7 +59,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   }
 
   Widget _buildContent(
-      BuildContext context, ShProduct product, List colorList) {
+      BuildContext context, Product product, List colorList) {
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
@@ -89,7 +85,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   }
 
   Widget _buildContentMobile(
-      BuildContext context, ShProduct product, List colorList) {
+      BuildContext context, Product product, List colorList) {
     return SingleChildScrollView(
       child: Padding(
         padding: sAllSidesGap,
@@ -116,7 +112,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
   }
 
   Widget _displayProductImages(
-      BuildContext context, ShProduct product, List colorList) {
+      BuildContext context, Product product, List colorList) {
     return CarouselSlider(
       options: CarouselOptions(
         height: 400.0,
@@ -167,7 +163,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
     );
   }
 
-  Widget _displayProductDescription(ShProduct product, List colorList) {
+  Widget _displayProductDescription(Product product, List colorList) {
     return Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -207,12 +203,12 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
           },
         ),
       );
-  Widget _productDescriptionView(ShProduct product, List colorList) {
+  Widget _productDescriptionView(Product product, List colorList) {
     List<String> categories = product.categories != null ? product.categories!.map((e) => e.name!,).toList() : <String>[];
     return Column(
         children: [
           ProductRating(
-            rating: double.parse(product.average_rating ?? "0"),
+            rating: double.parse(product.averageRating ?? "0"),
             inactiveColor: _appTheme.getTheme().colorScheme.secondary,
             activeColor: _appTheme.getTheme().colorScheme.primary,
           ),

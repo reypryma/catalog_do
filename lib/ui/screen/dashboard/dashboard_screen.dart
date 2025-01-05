@@ -27,14 +27,9 @@ class DashboardScreen extends StatelessWidget {
       fab = true;
     }
 
-    String blogTitle = title;
-    if (listTitle != null) {
-      blogTitle = listTitle!;
-    }
-
     return LayoutBuilder(builder: (context, constraints) {
       return AppScaffold(
-        title: blogTitle,
+        title: title,
         backButton: "hide",
         menu: "show",
         invisibleAppBar: hideScaffoldAppBar,
@@ -51,9 +46,7 @@ class DashboardScreen extends StatelessWidget {
         ),
         showFAB: fab ? true : false,
         onPressFAB: () {
-          if (fab == true) {
-            // Navigator.of(context).pushNamed(pageFAB!);
-          }
+
         },
         iconFAB: Icons.add,
       );
@@ -61,7 +54,6 @@ class DashboardScreen extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
-    // ThemeData theme = Theme.of(context);
     ThemeData theme = AppTheme().getTheme();
 
     return SingleChildScrollView(
@@ -106,7 +98,7 @@ class DashboardScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(20),
                 child: AppText.titleLarge(
-                    "Shop the Latest Trends and Unbeatable Deals",
+                    "Catalog of the Latest and Up Funky Trends",
                     fontWeight: 700,
                     letterSpacing: 1,
                     color: Colors.yellow,

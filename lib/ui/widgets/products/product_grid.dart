@@ -11,7 +11,7 @@ class ProductGrid extends StatelessWidget {
     this.spacing,
     this.limit,
   });
-  final List<ShProduct> data;
+  final List<Product> data;
   final int columns;
   final double? spacing;
   final int? limit;
@@ -32,7 +32,7 @@ class ProductGrid extends StatelessWidget {
               }));
             },
             child: ProductCard(
-              blog: element,
+              product: element,
             ),
           ),
         ));

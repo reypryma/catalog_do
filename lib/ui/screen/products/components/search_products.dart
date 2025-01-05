@@ -4,7 +4,7 @@ import 'package:catalog_do/ui/widgets/products/product_horizontal.dart';
 import 'package:flutter/material.dart';
 
 class SearchProducts extends StatelessWidget {
-  final List<ShProduct> products;
+  final List<Product> products;
 
   const SearchProducts({super.key, required this.products});
 
@@ -16,7 +16,7 @@ class SearchProducts extends StatelessWidget {
       itemCount: products.length,
       padding: EdgeInsets.all(16),
       itemBuilder: (context, index) {
-        ShProduct product = products[index];
+        Product product = products[index];
         return InkWell(
             child: ProductHorizontal(product: product),
           onTap: () {
